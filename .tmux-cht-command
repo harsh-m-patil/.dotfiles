@@ -1,0 +1,10 @@
+curl
+tar
+unzip
+gzip
+sed
+awk
+binwalk
+tmux
+pacman
+fzf
