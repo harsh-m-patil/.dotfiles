@@ -7,29 +7,36 @@ $git_state\
 $git_status\
 $git_metrics\
 $fill\
+$lua\
 $nodejs\
 $java\
 $c\
 $python\
 $rust\
+$battery\
 $cmd_duration $jobs $time\
 $line_break\
 $character"""
 
 [nodejs]
-format = "[$symbol($version )]($style)"
+format = "[$symbol($version )  ]($style)"
 
 [java]
-format = "[$symbol($version )]($style)"
+symbol = " "
+format = "[$symbol($version )  ]($style)"
+
+[lua]
+symbol = " "
+format = "[$symbol($version )  ]($style)"
 
 [c]
-format = "[$symbol($version )]($style)"
+format = "[$symbol($version )  ]($style)"
 
 [python]
-format = "[$symbol($version )]($style)"
+format = "[$symbol($version )  ]($style)"
 
 [rust]
-format = "[$symbol($version )]($style)"
+format = "[$symbol($version )  ]($style)"
 
 [fill]
 symbol = " "
@@ -37,7 +44,7 @@ symbol = " "
 [directory]
 style = "blue"
 read_only = " "
-truncation_length = 4
+truncation_length = 3
 truncate_to_repo = false
 
 [character]
@@ -73,6 +80,18 @@ style = "yellow"
 
 [memory_usage]
 symbol = " "
+
+[battery]
+full_symbol = '  '
+charging_symbol = '⚡️ '
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and threshold
+threshold = 100
+style = 'blue'
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 10%
+threshold = 76
+style = 'bold red'
 
 [time]
 disabled = false

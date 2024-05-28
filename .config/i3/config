@@ -15,7 +15,7 @@ set $alt Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:JetBrains Mono Nerd Font 10 
-default_border pixel 1
+default_border pixel 2
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -194,8 +194,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 gaps inner 10px
-smart_gaps on
-hide_edge_borders smart
 
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date).png"
@@ -209,7 +207,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 
 ## Brightness Shortcuts
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF87MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 set $rosewater #f5e0dc
 set $flamingo #f2cdcd
@@ -245,8 +243,9 @@ client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
+workspace 1 output HDMI-0
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh & 
 exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id picom -CGb
 exec_always --no-startup-id dunst
+exec_always --no-startup-id picom -CGb

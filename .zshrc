@@ -18,6 +18,7 @@ zinit light Aloxaf/fzf-tab
 autoload -U compinit && compinit
 
 bindkey '^f' autosuggest-accept
+
 bindkey -v
 
 # History
@@ -35,7 +36,7 @@ setopt hist_find_no_dups
 setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
@@ -52,14 +53,14 @@ alias pbcopy='xsel --input --clipboard'
 alias op='fd --type f --hidden --exclude .git | fzf-tmux -p -h 80% -w 85% --preview "bat {} --style=numbers --color=always" --border | xargs nvim'
 alias tmux='tmux -u'
 alias tls='tmux ls'
-alias ta='tmux a -t $(tmux ls | fzf --reverse | cut -d":" -f1)'
+alias ta='tmux a -t $(tmux ls | fzf-tmux -p -h 50% -w 60% --reverse | cut -d":" -f1)'
 alias treeg='tree --gitignore'
 alias mgr='mongod --dbpath="/home/harsh/.db/data"' # start the mongodb server
 alias cht='cheat.sh'
-alias etree='eza --tree -a  --icons=always --git-ignore'
+alias et='eza --tree -a  --icons=always --git-ignore'
 alias lg='lazygit'
-alias eza='eza --icons'
-
+alias el='eza --icons'
+alias btop='btop --utf-force'
 eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(zoxide init zsh)"
@@ -68,6 +69,12 @@ source <(fzf --zsh)
 # FZF Options
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="
 --walker-skip .git,node_modules,target

@@ -16,6 +16,7 @@ return {
                     "lua_ls",
                     "html",
                     "cssls",
+                    "bashls",
                 }
             })
         end,
@@ -32,6 +33,7 @@ return {
                 "lua_ls",
                 "html",
                 "cssls",
+                "bashls",
             }
 
             for _, lsp in ipairs(servers) do
