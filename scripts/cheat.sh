@@ -11,11 +11,15 @@ if [ "${tool}" == "language" ]; then
         else
             tmux neww bash -c "curl -s cht.sh/$lang/$query | less"
         fi
-    else 
-        curl cht.sh/$lang/$query | less
+    else
+        if [[ -z $query ]]; then
+            curl -s cht.sh/$lang | less
+        else
+            curl -s cht.sh/$lang/$query | less
+        fi
     fi
 else
-    command=$(gum input --placeholder "Enter Command") 
+    command=$(gum input --placeholder "Enter Command")
     query=$(gum input --placeholder "Enter query")
     if [ -n "$TMUX" ]; then
         if [[ -z $query ]]; then
@@ -24,6 +28,10 @@ else
             tmux neww bash -c "curl -s cht.sh/$command~$query | less"
         fi
     else
-        curl cht.sh/$command~$query | less
+        if [[ -z $query ]]; then
+            curl -s cht.sh/$command | less
+        else
+            curl -s cht.sh/$command~$query | less
+        fi
     fi
 fi

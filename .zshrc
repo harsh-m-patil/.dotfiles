@@ -11,7 +11,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Load zsh-completions
@@ -61,6 +61,8 @@ alias et='eza --tree -a  --icons=always --git-ignore'
 alias lg='lazygit'
 alias el='eza --icons'
 alias btop='btop --utf-force'
+alias t='tmux-session.sh'
+
 eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(zoxide init zsh)"
@@ -109,3 +111,4 @@ export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 
+export EDITOR='nvim'
