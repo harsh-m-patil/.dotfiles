@@ -5,7 +5,7 @@
 1. Clone the repo
 
 ```
-git clone https://github.com/harsh-m-patil/dotfiles.git ~
+git clone https://github.com/harsh-m-patil/.dotfiles.git ~/.dotfiles
 ```
 
 2. Goto dotfiles
