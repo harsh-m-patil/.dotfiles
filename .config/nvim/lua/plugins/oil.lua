@@ -29,6 +29,7 @@ return {
 				-- Show files and directories that start with "."
 				show_hidden = true,
 			},
+			vim.keymap.set("n", "<leader>n", ":Oil<CR>", { desc = "Open Oil.nvim" }),
 		})
 	end,
 }

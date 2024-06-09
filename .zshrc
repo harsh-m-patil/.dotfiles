@@ -46,14 +46,11 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
 alias cl='clear'
 alias pbpaste='xsel --output --clipboard'
 alias pbcopy='xsel --input --clipboard'
-alias op='fd --type f --hidden --exclude .git | fzf-tmux -p -h 80% -w 85% --preview "bat {} --style=numbers --color=always" --border | xargs nvim'
 alias tmux='tmux -u'
 alias tls='tmux ls'
-alias ta='tmux a -t $(tmux ls | fzf-tmux -p -h 50% -w 60% --reverse | cut -d":" -f1)'
 alias treeg='tree --gitignore'
 alias mgr='mongod --dbpath="/home/harsh/.db/data"' # start the mongodb server
 alias cht='cheat.sh'
