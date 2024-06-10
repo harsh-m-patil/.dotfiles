@@ -44,8 +44,8 @@ symbol = " "
 [directory]
 style = "blue"
 read_only = " "
-truncation_length = 3
-truncate_to_repo = false
+truncation_length = 2
+truncate_to_repo = true
 
 [character]
 success_symbol = "[❯](purple)"

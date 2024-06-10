@@ -12,6 +12,7 @@ return {
 			sources = {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettierd,
+				null_ls.builtins.formatting.google_java_format,
 				-- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
 			},
 			on_attach = function(client, bufnr)

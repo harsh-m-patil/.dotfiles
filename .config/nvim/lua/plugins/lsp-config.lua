@@ -15,8 +15,6 @@ return {
 					"rust_analyzer",
 					"java_language_server",
 					"lua_ls",
-					"html",
-					"cssls",
 					"bashls",
 					"eslint",
 				},
@@ -38,14 +36,12 @@ return {
 				"rust_analyzer",
 				"java_language_server",
 				"lua_ls",
-				"html",
-				"cssls",
 				"tailwindcss",
 				"eslint",
 				"bashls",
 			}
-			local cmp_nvim_lsp = require("cmp_nvim_lsp")
-			local capabilities = cmp_nvim_lsp.default_capabilities()
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({
@@ -55,10 +51,9 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
-					-- Buffer local mappings.
+					local map = vim.keymap.set
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
 					local opts = { buffer = ev.buf, silent = true }
-					local map = vim.keymap.set
 					map("n", "gD", vim.lsp.buf.declaration, opts)
 					map("n", "gd", vim.lsp.buf.definition, opts)
 					map("n", "K", vim.lsp.buf.hover, opts)

@@ -61,9 +61,9 @@ bindsym $alt+Tab exec --no-startup-id rofi -show window
 bindsym $mod+space exec --no-startup-id rofi -show drun 
 bindsym $alt+space exec --no-startup-id rofi -show run 
 bindsym $alt+w exec --no-startup-id rofi-wifi-menu.sh
-bindsym XF86PowerOff exec --no-startup-id rofi-power-menu.sh
-bindsym $mod+Shift+f exec --no-startup-id nautilus
+bindsym $mod+Shift+f exec --no-startup-id thunar
 bindsym $mod+Shift+b exec  --no-startup-id brave
+bindsym $mod+Shift+v exec  --no-startup-id vscodium
 
 
 # A more modern dmenu replacement is rofi:
@@ -193,7 +193,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-gaps inner 10px
+gaps inner 5px
 
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date).png"
