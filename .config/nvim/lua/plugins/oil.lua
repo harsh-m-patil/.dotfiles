@@ -14,7 +14,7 @@ return {
 				["<C-h>"] = "actions.select_split",
 				["<C-t>"] = "actions.select_tab",
 				["<C-p>"] = "actions.preview",
-				["<leader>n"] = "actions.close",
+				["<C-n>"] = "actions.close",
 				["<C-l>"] = "actions.refresh",
 				["-"] = "actions.parent",
 				["_"] = "actions.open_cwd",
@@ -29,7 +29,7 @@ return {
 				-- Show files and directories that start with "."
 				show_hidden = true,
 			},
-			vim.keymap.set("n", "<leader>n", ":Oil<CR>", { desc = "Open Oil.nvim" }),
+			vim.keymap.set("n", "<C-n>", ":Oil<CR>", { desc = "Open Oil.nvim" }),
 		})
 	end,
 }

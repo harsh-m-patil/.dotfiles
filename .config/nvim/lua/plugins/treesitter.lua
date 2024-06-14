@@ -17,6 +17,7 @@ return {
 					"javascript",
 					"html",
 					"markdown",
+					"json",
 				},
 				incremental_selection = {
 					enable = true,

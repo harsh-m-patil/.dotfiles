@@ -18,8 +18,12 @@ zinit light Aloxaf/fzf-tab
 autoload -U compinit && compinit
 
 bindkey '^f' autosuggest-accept
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 bindkey -v
+
+source ~/.zsh_aliases
 
 # History
 HISTSIZE=5000
@@ -41,24 +45,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# aliases 
-alias cp="cp -i"                                                # Confirm before overwriting something
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
-alias cl='clear'
-alias pbpaste='xsel --output --clipboard'
-alias pbcopy='xsel --input --clipboard'
-alias tmux='tmux -u'
-alias tls='tmux ls'
-alias treeg='tree --gitignore'
-alias mgr='mongod --dbpath="/home/harsh/.db/data"' # start the mongodb server
-alias cht='cheat.sh'
-alias et='eza --tree -a  --icons=always --git-ignore'
-alias lg='lazygit'
-alias el='eza --icons'
-alias btop='btop --utf-force'
-alias t='tmux-session.sh'
 
 eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
@@ -109,3 +95,5 @@ eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 
 export EDITOR='nvim'
+
+tmux-load.sh

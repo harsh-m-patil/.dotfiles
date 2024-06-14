@@ -3,20 +3,22 @@ $username\
 $hostname\
 $directory\
 $git_branch\
-$git_state\
-$git_status\
-$git_metrics\
 $fill\
-$lua\
-$nodejs\
-$java\
-$c\
-$python\
-$rust\
 $battery\
-$cmd_duration $jobs $time\
+$cmd_duration  $time\
 $line_break\
 $character"""
+
+# $lua\
+# $nodejs\
+# $java\
+# $c\
+# $python\
+# $rust\
+# $git_state\
+# $git_status\
+# $git_metrics\
+# $jobs
 
 [nodejs]
 format = "[$symbol($version )  ]($style)"
@@ -54,14 +56,8 @@ vicmd_symbol = "[❮](green)"
 
 [git_branch]
 symbol = " "
-format = "[$symbol$branch]($style) "
+format = "[$branch]($style) "
 style = "bright-black"
-
-[jobs]
-symbol = ""
-style = "bold red"
-number_threshold = 1
-format = "[$symbol]($style)"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'

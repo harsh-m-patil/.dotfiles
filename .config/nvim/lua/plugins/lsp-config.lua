@@ -2,7 +2,12 @@ return {
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				ensure_installed = {
+					"stylua",
+					"prettierd",
+				},
+			})
 		end,
 	},
 	{
@@ -13,9 +18,9 @@ return {
 					"tailwindcss",
 					"tsserver",
 					"rust_analyzer",
-					"java_language_server",
 					"lua_ls",
 					"bashls",
+					"html",
 					"eslint",
 				},
 			})
@@ -27,17 +32,17 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
-			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
 			local servers = {
 				"tsserver",
 				"rust_analyzer",
-				"java_language_server",
 				"lua_ls",
 				"tailwindcss",
 				"eslint",
+				"html",
+				"jdtls",
 				"bashls",
 			}
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -66,15 +71,4 @@ return {
 		end,
 	},
 	{ "j-hui/fidget.nvim", opts = {} },
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-		-- use opts = {} for passing setup options
-		-- this is equalent to setup({}) function
-	},
-	{
-		"folke/neodev.nvim",
-		opts = {},
-	},
 }

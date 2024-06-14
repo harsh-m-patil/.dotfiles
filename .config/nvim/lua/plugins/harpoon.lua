@@ -20,7 +20,7 @@ return {
 		vim.keymap.set("n", "<C-y>", function()
 			harpoon:list():select(1)
 		end)
-		vim.keymap.set("n", "<C-n>", function()
+		vim.keymap.set("n", "<C-i>", function()
 			harpoon:list():select(2)
 		end)
 		vim.keymap.set("n", "<C-s>", function()
@@ -30,9 +30,9 @@ return {
 		-- Toggle previous & next buffers stored within Harpoon list
 		vim.keymap.set("n", "<C-S-P>", function()
 			harpoon:list():prev()
-		end)
+		end, { desc = "harpoon list previous" })
 		vim.keymap.set("n", "<C-S-N>", function()
 			harpoon:list():next()
-		end)
+		end, { desc = "harpoon list next" })
 	end,
 }

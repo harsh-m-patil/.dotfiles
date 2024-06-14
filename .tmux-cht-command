@@ -4,7 +4,8 @@ unzip
 gzip
 sed
 awk
-binwalk
+git
+gh
 tmux
 pacman
 fzf

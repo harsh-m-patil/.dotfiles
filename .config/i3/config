@@ -62,7 +62,7 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $alt+space exec --no-startup-id rofi -show run 
 bindsym $alt+w exec --no-startup-id rofi-wifi-menu.sh
 bindsym $mod+Shift+f exec --no-startup-id thunar
-bindsym $mod+Shift+b exec  --no-startup-id brave
+bindsym $mod+Shift+b exec  --no-startup-id firefox
 bindsym $mod+Shift+v exec  --no-startup-id vscodium
 
 
@@ -193,7 +193,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-gaps inner 5px
+gaps inner 10px
 
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date).png"
@@ -207,34 +207,34 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 
 ## Brightness Shortcuts
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF87MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-set $rosewater #f5e0dc
-set $flamingo #f2cdcd
-set $pink #f5c2e7
-set $mauve #cba6f7
-set $red #f38ba8
-set $maroon #eba0ac
-set $peach #fab387
-set $yellow #f9e2af
-set $green #a6e3a1
-set $teal #94e2d5
-set $sky #89dceb
-set $sapphire #74c7ec
-set $blue #89b4fa
-set $lavender #b4befe
-set $text #cdd6f4
-set $subtext1 #bac2de
-set $subtext0 #a6adc8
-set $overlay2 #9399b2
-set $overlay1 #7f849c
-set $overlay0 #6c7086
-set $surface2 #585b70
-set $surface1 #45475a
-set $surface0 #313244
-set $base #1e1e2e
-set $mantle #181825
-set $crust #11111b
+set $rosewater #f4dbd6
+set $flamingo #f0c6c6
+set $pink #f5bde6
+set $mauve #c6a0f6
+set $red #ed8796
+set $maroon #ee99a0
+set $peach #f5a97f
+set $yellow #eed49f
+set $green #a6da95
+set $teal #8bd5ca
+set $sky #91d7e3
+set $sapphire #7dc4e4
+set $blue #8aadf4
+set $lavender #b7bdf8
+set $text #cad3f5
+set $subtext1 #b8c0e0
+set $subtext0 #a5adcb
+set $overlay2 #939ab7
+set $overlay1 #8087a2
+set $overlay0 #6e738d
+set $surface2 #5b6078
+set $surface1 #494d64
+set $surface0 #363a4f
+set $base #24273a
+set $mantle #1e2030
+set $crust #181926
 
 # target                 title     bg    text   indicator  border
 client.focused           $lavender $base $text  $rosewater $lavender
