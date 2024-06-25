@@ -13,6 +13,9 @@ map("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
+map({ "n", "v" }, "<leader>y", '"+y')
+map({ "n", "v" }, "<leader>p", '"+p')
+
 -- diagnostics
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
@@ -27,6 +30,6 @@ map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go 
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- buffers
-map("n", "<Tab>n", "<cmd>bn<CR>", { desc = "go to next buffer" })
-map("n", "<Tab>p", "<cmd>bp<CR>", { desc = "go to previous buffer" })
-map("n", "<leader>qe", "<CMD>q!<CR>", { desc = "close empty buffer without saving " })
+map("n", "<Tab>", "<cmd>bn<CR>", { desc = "go to next buffer" })
+map("n", "<leader>bp", "<cmd>bp<CR>", { desc = "go to previous buffer" })
+map("n", "<leader>bd", "<cmd>bd<CR>", { desc = "delete current buffer" })

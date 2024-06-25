@@ -2,8 +2,9 @@ import = [
 # uncomment the flavour you want below:
 #"~/.config/alacritty/catppuccin-latte.toml"
 # "~/.config/alacritty/catppuccin-frappe.toml"
-    "~/.config/alacritty/catppuccin-macchiato.toml"
-# "~/.config/alacritty/catppuccin-mocha.toml"
+# "~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
+# "~/.config/alacritty/tokyo-night.toml"
 ]
 
 [bell]
@@ -52,7 +53,7 @@ program = "/bin/zsh"
 [window]
 dynamic_title = true
 option_as_alt = "Both"
-opacity = 0.95
+opacity = 1.0
 blur = true
 
 [window.padding]

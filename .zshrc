@@ -17,11 +17,8 @@ zinit light Aloxaf/fzf-tab
 # Load zsh-completions
 autoload -U compinit && compinit
 
-bindkey '^f' autosuggest-accept
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-
-bindkey -v
+# bindkey '^f' autosuggest-accept
+bindkey -e
 
 source ~/.zsh_aliases
 
@@ -95,5 +92,3 @@ eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 
 export EDITOR='nvim'
-
-tmux-load.sh

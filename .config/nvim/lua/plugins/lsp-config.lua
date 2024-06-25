@@ -1,6 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		cmd = { "Mason", "MasonInstall", "MasonUpdate" },
 		config = function()
 			require("mason").setup({
 				ensure_installed = {
@@ -17,33 +18,28 @@ return {
 				ensure_installed = {
 					"tailwindcss",
 					"tsserver",
-					"rust_analyzer",
 					"lua_ls",
 					"bashls",
 					"html",
 					"eslint",
+					"gopls",
 				},
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			{ "antosha417/nvim-lsp-file-operations", config = true },
-		},
 		config = function()
 			local lspconfig = require("lspconfig")
 			local servers = {
 				"tsserver",
-				"rust_analyzer",
 				"lua_ls",
 				"tailwindcss",
 				"eslint",
 				"html",
 				"jdtls",
 				"bashls",
+				"gopls",
 			}
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
@@ -70,5 +66,11 @@ return {
 			})
 		end,
 	},
-	{ "j-hui/fidget.nvim", opts = {} },
+	{
+		"j-hui/fidget.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- options
+		},
+	},
 }

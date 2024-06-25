@@ -1,27 +1,17 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
 		tag = "0.1.6",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("telescope").setup({})
-		end,
-	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
-			})
-			require("telescope").load_extension("ui-select")
 			local map = vim.keymap.set
 			local builtin = require("telescope.builtin")
 			-- builtin
 			map("n", "<leader>ff", builtin.find_files, { desc = " [F]ind files" })
+			map("n", "<C-p>", builtin.find_files, { desc = " [F]ind files" })
+			map("n", "<leader>gf", builtin.git_files, { desc = " [G]it files" })
 			map("n", "<leader>fg", builtin.live_grep, { desc = " [F]ind by live grep" })
 			map("n", "<leader>fh", builtin.help_tags, { desc = " [F]ind help" })
 			map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
@@ -72,6 +62,20 @@ return {
 					map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
 				end,
 			})
+		end,
+	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("telescope").setup({
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+				},
+			})
+			require("telescope").load_extension("ui-select")
 		end,
 	},
 }

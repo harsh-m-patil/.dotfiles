@@ -1,9 +1,9 @@
 return {
 	"stevearc/oil.nvim",
-	lazy = false,
+	keys = {
+		{ "<leader>n", "<cmd>Oil<cr>", desc = "Open oil.nvim" },
+	},
 	opts = {},
-	-- Optional dependencies
-	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("oil").setup({
 			default_file_explorer = true,
@@ -14,7 +14,7 @@ return {
 				["<C-h>"] = "actions.select_split",
 				["<C-t>"] = "actions.select_tab",
 				["<C-p>"] = "actions.preview",
-				["<C-n>"] = "actions.close",
+				["<leader>n"] = "actions.close",
 				["<C-l>"] = "actions.refresh",
 				["-"] = "actions.parent",
 				["_"] = "actions.open_cwd",
@@ -29,7 +29,6 @@ return {
 				-- Show files and directories that start with "."
 				show_hidden = true,
 			},
-			vim.keymap.set("n", "<C-n>", ":Oil<CR>", { desc = "Open Oil.nvim" }),
 		})
 	end,
 }

@@ -3,6 +3,7 @@ $username\
 $hostname\
 $directory\
 $git_branch\
+$git_metrics\
 $fill\
 $battery\
 $cmd_duration  $time\
@@ -17,7 +18,6 @@ $character"""
 # $rust\
 # $git_state\
 # $git_status\
-# $git_metrics\
 # $jobs
 
 [nodejs]

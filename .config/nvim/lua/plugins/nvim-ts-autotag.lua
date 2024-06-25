@@ -2,11 +2,9 @@ return {
 	{
 		"windwp/nvim-ts-autotag",
 		ft = {
-			"javascript",
 			"html",
 			"javascriptreact",
 			"typescriptreact",
-			"typescript",
 		},
 		config = function()
 			require("nvim-ts-autotag").setup({})
@@ -18,7 +16,7 @@ return {
 	},
 	{
 		"windwp/nvim-autopairs",
-		event = "InsertEnter",
+		event = { "BufReadPre", "BufNewFile" },
 		config = true,
 		-- use opts = {} for passing setup options
 		-- this is equalent to setup({}) function
