@@ -1,0 +1,34 @@
+{
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 16,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "files.autoSave": "onFocusChange",
+  "terminal.external.linuxExec": "alacritty",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "vim.smartRelativeLine": true,
+  "editor.lineNumbers": "relative",
+  "editor.cursorSurroundingLines": 13,
+  "window.menuBarVisibility": "toggle",
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "workbench.statusBar.visible": true,
+  "editor.renderWhitespace": "none",
+  "workbench.activityBar.location": "hidden",
+  "vim.incsearch": true,
+  "vim.enableNeovim": true,
+  "vim.handleKeys": {
+    "<C-p>": false
+  },
+  "vim.commandLineModeKeyBindings": [],
+  "go.toolsManagement.autoUpdate": true,
+  "vim.neovimPath": "/usr/bin/nvim"
+}

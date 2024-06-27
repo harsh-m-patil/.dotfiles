@@ -29,12 +29,15 @@ SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
-setopt histignorespace                                          # Don't save commands that start with space
-setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+# Don't save commands that start with space
+setopt histignorespace 
+# If a new command is a duplicate, remove the older one
+setopt histignorealldups                                        
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+# save commands are added to the history immediately, otherwise only when shell exits.
+setopt inc_append_history                                       
 
 # Completion styling
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

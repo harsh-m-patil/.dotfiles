@@ -1,22 +1,16 @@
 return {
 	{
-		"hrsh7th/cmp-nvim-lsp",
-		event = "InsertEnter",
-	},
-	{
-		"L3MON4D3/LuaSnip",
+		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
+			"hrsh7th/cmp-nvim-lsp",
 			"rafamadriz/friendly-snippets",
 			"hrsh7th/cmp-path", -- source for file system paths
 			"hrsh7th/cmp-buffer",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
 		},
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()

@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+workspace 1 output HDMI-0
 set $mod Mod4
 set $alt Mod1
 
@@ -243,7 +244,6 @@ client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
-workspace 1 output HDMI-0
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh & 
 exec_always --no-startup-id nitrogen --restore
