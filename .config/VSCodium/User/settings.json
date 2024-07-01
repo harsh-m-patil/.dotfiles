@@ -26,7 +26,8 @@
   "vim.incsearch": true,
   "vim.enableNeovim": true,
   "vim.handleKeys": {
-    "<C-p>": false
+    "<C-p>": false,
+    "<C-b>": false
   },
   "vim.commandLineModeKeyBindings": [],
   "go.toolsManagement.autoUpdate": true,

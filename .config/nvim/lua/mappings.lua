@@ -31,5 +31,7 @@ map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new
 
 -- buffers
 map("n", "<Tab>", "<cmd>bn<CR>", { desc = "go to next buffer" })
+map("n", "]b", "<cmd>bn<CR>", { desc = "go to next buffer" })
+map("n", "[b", "<cmd>bp<CR>", { desc = "go to prev buffer" })
 map("n", "<leader>bp", "<cmd>bp<CR>", { desc = "go to previous buffer" })
 map("n", "<leader>bd", "<cmd>bd<CR>", { desc = "delete current buffer" })

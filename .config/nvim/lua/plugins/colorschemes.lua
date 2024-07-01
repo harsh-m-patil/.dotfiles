@@ -10,6 +10,12 @@ return {
 				styles = {
 					functions = { "italic" },
 				},
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					nvimtree = true,
+					treesitter = true,
+				},
 			})
 			vim.cmd.colorscheme("catppuccin")
 		end,

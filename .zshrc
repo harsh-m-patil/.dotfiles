@@ -95,3 +95,4 @@ eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 
 export EDITOR='nvim'
+export PATH="$HOME/go/bin:$PATH"
