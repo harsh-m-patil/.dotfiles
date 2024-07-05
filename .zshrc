@@ -76,7 +76,7 @@ export FZF_CTRL_T_OPTS="
 export FZF_CTRL_R_OPTS="
 --preview 'echo {}' --preview-window up:3:hidden:wrap
 --bind 'ctrl-/:toggle-preview'
---bind 'ctrl-y:execute-silent(echo -n {2..} | xsel --input --clipboard)+abort'
+--bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy )+abort'
 --color header:italic
 --header 'Press CTRL-y to copy to clipboard'"
 

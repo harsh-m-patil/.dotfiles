@@ -26,9 +26,7 @@ return {
 			-- Slightly advanced example of overriding default behavior and theme
 			map("n", "<leader>/", function()
 				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
-				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-					previewer = false,
-				}))
+				builtin.current_buffer_fuzzy_find()
 			end, { desc = "[/] Fuzzily search in current buffer" })
 
 			vim.api.nvim_create_autocmd("LspAttach", {

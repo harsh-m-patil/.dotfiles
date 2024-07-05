@@ -6,10 +6,10 @@ $git_branch\
 $git_metrics\
 $fill\
 $battery\
-$cmd_duration  $time\
-$line_break\
+$cmd_duration  
 $character"""
 
+# $line_break\
 # $lua\
 # $nodejs\
 # $java\
@@ -19,6 +19,7 @@ $character"""
 # $git_state\
 # $git_status\
 # $jobs
+#$time\
 
 [nodejs]
 format = "[$symbol($version )  ]($style)"

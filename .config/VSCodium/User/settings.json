@@ -22,7 +22,6 @@
   "breadcrumbs.enabled": false,
   "workbench.statusBar.visible": true,
   "editor.renderWhitespace": "none",
-  "workbench.activityBar.location": "hidden",
   "vim.incsearch": true,
   "vim.enableNeovim": true,
   "vim.handleKeys": {
@@ -31,5 +30,6 @@
   },
   "vim.commandLineModeKeyBindings": [],
   "go.toolsManagement.autoUpdate": true,
-  "vim.neovimPath": "/usr/bin/nvim"
+  "vim.neovimPath": "/usr/bin/nvim",
+  "workbench.activityBar.location": "hidden"
 }

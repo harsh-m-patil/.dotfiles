@@ -1,0 +1,18 @@
+# aliases 
+alias cp="cp -i"                                                # Confirm before overwriting something
+alias df='df -h'                                                # Human-readable sizes
+alias free='free -m'                                            # Show sizes in MB
+alias cl='clear'
+alias pbpaste='xsel --output --clipboard'
+alias pbcopy='xsel --input --clipboard'
+alias tmux='tmux -u'
+alias tls='tmux ls'
+alias treeg='tree --gitignore -a -I .git'
+alias mgr='mongod --dbpath="/home/harsh/.db/data"' # start the mongodb server
+alias cht='cheatsheet.sh'
+alias et='eza --tree -a  --icons=always --git-ignore'
+alias lg='lazygit'
+alias el='eza --icons'
+alias btop='btop --utf-force'
+alias t='tmux-session.sh'
+alias c='cheatsheet.sh'

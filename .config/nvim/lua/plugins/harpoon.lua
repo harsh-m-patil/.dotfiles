@@ -22,7 +22,7 @@ return {
 			harpoon:list():select(1)
 		end)
 
-		vim.keymap.set("n", "<C-c>", function()
+		vim.keymap.set("n", "<C-t>", function()
 			harpoon:list():select(2)
 		end)
 
