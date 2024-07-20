@@ -1,5 +1,5 @@
 return {
 	"github/copilot.vim",
-	-- event = "VeryLazy",
-	lazy = true,
+	event = "VeryLazy",
+	-- lazy = true,
 }

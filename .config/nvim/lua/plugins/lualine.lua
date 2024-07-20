@@ -11,7 +11,8 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {},
-				lualine_c = { "buffers" },
+				lualine_c = { "filename" },
+				-- lualine_c = { "buffers" },
 				lualine_x = { "diff", "diagnostics" },
 				lualine_y = { "progress" },
 				lualine_z = {},

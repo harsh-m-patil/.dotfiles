@@ -25,8 +25,3 @@ vim.opt.hlsearch = true
 
 -- display colorcolumn
 vim.opt.colorcolumn = "80"
-
-function Transparent()
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end

@@ -38,6 +38,8 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 # save commands are added to the history immediately, otherwise only when shell exits.
 setopt inc_append_history                                       
+setopt CORRECT
+setopt interactivecomments
 
 # Completion styling
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -54,11 +56,6 @@ source <(fzf --zsh)
 # FZF Options
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
-
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="
@@ -93,6 +90,7 @@ export LESS=-R
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
-
 export EDITOR='nvim'
 export PATH="$HOME/go/bin:$PATH"
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
