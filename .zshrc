@@ -17,8 +17,10 @@ zinit light Aloxaf/fzf-tab
 # Load zsh-completions
 autoload -U compinit && compinit
 
-# bindkey '^f' autosuggest-accept
-bindkey -e
+bindkey -v
+bindkey '^f' autosuggest-accept
+bindkey "^p" up-line-or-search
+bindkey "^n" down-line-or-search
 
 source ~/.zsh_aliases
 

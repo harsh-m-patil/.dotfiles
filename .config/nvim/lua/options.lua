@@ -1,5 +1,7 @@
 vim.cmd("set mouse= ")
 
+vim.cmd("let g:netrw_banner=0")
+
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true

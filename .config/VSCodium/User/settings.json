@@ -18,7 +18,6 @@
   "editor.lineNumbers": "relative",
   "editor.cursorSurroundingLines": 13,
   "window.menuBarVisibility": "toggle",
-  "editor.minimap.enabled": false,
   "breadcrumbs.enabled": false,
   "workbench.statusBar.visible": true,
   "editor.renderWhitespace": "none",
@@ -31,5 +30,6 @@
   "vim.commandLineModeKeyBindings": [],
   "go.toolsManagement.autoUpdate": true,
   "vim.neovimPath": "/usr/bin/nvim",
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "editor.minimap.enabled": false
 }
