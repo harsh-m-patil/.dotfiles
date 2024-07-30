@@ -1,7 +1,7 @@
 {
   "workbench.colorTheme": "Catppuccin Mocha",
   "editor.fontFamily": "JetBrainsMono Nerd Font",
-  "editor.fontSize": 16,
+  "editor.fontSize": 15,
   "vim.insertModeKeyBindings": [
     {
       "before": ["j", "k"],

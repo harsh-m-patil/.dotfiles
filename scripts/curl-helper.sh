@@ -7,7 +7,7 @@ header_json="Content-Type: application/json"
 case $method in
   "POST" | "PUT" | "PATCH")
     body=$(gum input --placeholder="Body(JSON)")
-    query="curl -H \"$header_json\" -d '{ $body }'  -X $method $api_url"
+    query="curl -sS -H \"$header_json\" -d '{ $body }'  -X $method $api_url"
     ;;
   "GET" | "DELETE")
     query="curl -X $method $api_url"
@@ -18,7 +18,8 @@ case $method in
     ;;
 esac
 
-echo $query
+echo $query 
+echo $query | xsel --input --clipboard
 
 if gum confirm "Do you want to execute the query"; then 
   eval $query

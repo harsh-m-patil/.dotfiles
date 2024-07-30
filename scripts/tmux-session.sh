@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd .  ~/.dotfiles/ ~/projects --min-depth 1 --maxdepth 1 --type d --hidden --exclude .git | fzf-tmux -p -h 80% -w 80% --preview="eza {} -L 1 --tree --icons --color=always --git-ignore")
+    selected=$(fd .  ~/Learn/ ~/.dotfiles/ ~/projects ~/notes --min-depth 1 --maxdepth 1 --type d --hidden --exclude .git | fzf-tmux -p -h 80% -w 80% --preview="eza {} -L 1 --tree --icons --color=always --git-ignore")
 fi
 
 if [[ -z $selected ]]; then
