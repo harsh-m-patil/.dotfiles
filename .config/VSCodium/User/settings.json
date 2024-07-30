@@ -30,6 +30,5 @@
   "vim.commandLineModeKeyBindings": [],
   "go.toolsManagement.autoUpdate": true,
   "vim.neovimPath": "/usr/bin/nvim",
-  "workbench.activityBar.location": "hidden",
   "editor.minimap.enabled": false
 }
