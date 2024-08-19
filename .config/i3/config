@@ -68,6 +68,8 @@ bindsym $alt+space exec --no-startup-id rofi -show run
 bindsym $alt+w exec --no-startup-id rofi-wifi-menu.sh
 bindsym $mod+Shift+f exec --no-startup-id thunar
 bindsym $mod+Shift+b exec  --no-startup-id firefox
+bindsym $mod+Shift+d exec  --no-startup-id firefox-developer-edition
+bindsym $mod+Shift+o exec  --no-startup-id obsidian
 bindsym $mod+Shift+v exec  --no-startup-id vscodium
 
 # A more modern dmenu replacement is rofi:

@@ -22,6 +22,13 @@ bindkey '^f' autosuggest-accept
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
+cheatsheet() {
+  cheatsheet.sh
+}
+
+zle -N cheatsheet
+bindkey "^k" cheatsheet
+
 source ~/.zsh_aliases
 
 # History

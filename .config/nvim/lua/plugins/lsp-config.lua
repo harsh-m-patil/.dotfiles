@@ -33,12 +33,12 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			local servers = {
-				"tsserver",
 				"lua_ls",
 				"tailwindcss",
 				"eslint",
 				"html",
 				"jdtls",
+				"pyright",
 				"bashls",
 			}
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -49,6 +49,15 @@ return {
 					capabilities = capabilities,
 				})
 			end
+
+			lspconfig.tsserver.setup({
+				capabilities = capabilities,
+				init_options = {
+					preferences = {
+						disableSuggestions = true,
+					},
+				},
+			})
 
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
