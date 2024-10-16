@@ -26,6 +26,18 @@ cheatsheet() {
   cheatsheet.sh
 }
 
+wlogin() {
+  wifi-login.sh
+}
+
+wlogout() {
+  curl -sS http://10.1.0.1:2281/submit/logout.php > /dev/null
+}
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
 zle -N cheatsheet
 bindkey "^k" cheatsheet
 
@@ -58,6 +70,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 eval "$(starship init zsh)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
@@ -103,3 +116,4 @@ export EDITOR='nvim'
 export PATH="$HOME/go/bin:$PATH"
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
+

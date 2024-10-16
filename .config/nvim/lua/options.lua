@@ -6,7 +6,7 @@ vim.cmd("let g:netrw_banner=0")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 18
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.shiftwidth = 2
@@ -26,4 +26,4 @@ vim.opt.hlsearch = true
 vim.opt.cursorline = true
 
 -- display colorcolumn
--- vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80"

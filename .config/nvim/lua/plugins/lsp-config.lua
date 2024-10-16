@@ -17,7 +17,6 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"tailwindcss",
-					"tsserver",
 					"lua_ls",
 					"bashls",
 					"html",
@@ -34,13 +33,14 @@ return {
 			local lspconfig = require("lspconfig")
 			local servers = {
 				"lua_ls",
-				"tailwindcss",
 				"eslint",
 				"html",
 				"jdtls",
+				"clangd",
 				"pyright",
 				"bashls",
 			}
+
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -49,15 +49,6 @@ return {
 					capabilities = capabilities,
 				})
 			end
-
-			lspconfig.tsserver.setup({
-				capabilities = capabilities,
-				init_options = {
-					preferences = {
-						disableSuggestions = true,
-					},
-				},
-			})
 
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
@@ -70,6 +61,19 @@ return {
 						gofumpt = true,
 					},
 				},
+			})
+
+			lspconfig.denols.setup({
+				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+			})
+
+			lspconfig.ts_ls.setup({
+				root_dir = lspconfig.util.root_pattern("package.json"),
+				single_file_support = false,
+			})
+
+			lspconfig.tailwindcss.setup({
+				root_dir = lspconfig.util.root_pattern("tailwind.config.js"),
 			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {

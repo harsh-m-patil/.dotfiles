@@ -1,9 +1,13 @@
 import = [
 # uncomment the flavour you want below:
+#"~/.config/alacritty/catppuccin-latte.toml"
+# "~/.config/alacritty/catppuccin-frappe.toml"
 # "~/.config/alacritty/catppuccin-macchiato.toml"
-  "~/.config/alacritty/catppuccin-mocha.toml"
-# "~/.config/alacritty/tokyo-night.toml"
+# "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/tokyo-night.toml"
 ]
+
+live_config_reload = true
 
 [bell]
 animation = "EaseOutExpo"
@@ -12,11 +16,20 @@ duration = 0
 [colors]
 draw_bold_text_with_bright_colors = true
 
+[cursor]
+blink_interval = 500
+blink_timeout = 5
+unfocused_hollow = false
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 16
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -28,7 +41,6 @@ y = 0
 
 [font.italic]
 family = "JetBrainsMono Nerd Font"
-style = "Italic"
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
@@ -37,6 +49,9 @@ style = "Regular"
 [font.offset]
 x = 0
 y = 0
+
+[mouse]
+hide_when_typing = true
 
 [[mouse.bindings]]
 action = "PasteSelection"
@@ -49,11 +64,17 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 program = "/bin/zsh"
 
 [window]
+decorations = "full"
 dynamic_title = true
 option_as_alt = "Both"
-opacity = 1.0
+opacity = 0.9
 blur = true
+#startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 160
+lines = 80
 
 [window.padding]
-x = 5
-y = 0
+x = 4
+y = 4

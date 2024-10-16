@@ -1,7 +1,6 @@
 {
-  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.colorTheme": "Tokyo Night Storm",
   "editor.fontFamily": "JetBrainsMono Nerd Font",
-  "editor.fontSize": 15,
   "vim.insertModeKeyBindings": [
     {
       "before": ["j", "k"],
@@ -31,5 +30,6 @@
   "vim.neovimPath": "/usr/bin/nvim",
   "editor.minimap.enabled": false,
   "workbench.activityBar.location": "hidden",
-  "workbench.iconTheme": "file-icons"
+  "workbench.iconTheme": "file-icons",
+  "editor.fontSize": 15
 }

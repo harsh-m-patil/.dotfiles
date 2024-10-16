@@ -15,7 +15,7 @@ set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono Nerd Font 10 
+font pango:JetBrains Mono Nerd Font 12
 default_border pixel 2
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -64,13 +64,13 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 bindsym $alt+Tab exec --no-startup-id rofi -show window
 bindsym $mod+space exec --no-startup-id rofi -show drun 
-bindsym $alt+space exec --no-startup-id rofi -show run 
+bindsym $alt+space exec --no-startup-id ulauncher
 bindsym $alt+w exec --no-startup-id rofi-wifi-menu.sh
-bindsym $mod+Shift+f exec --no-startup-id thunar
+bindsym $mod+Shift+f exec --no-startup-id nautilus
 bindsym $mod+Shift+b exec  --no-startup-id firefox
 bindsym $mod+Shift+d exec  --no-startup-id firefox-developer-edition
 bindsym $mod+Shift+o exec  --no-startup-id obsidian
-bindsym $mod+Shift+v exec  --no-startup-id vscodium
+bindsym $mod+Shift+v exec  --no-startup-id code
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -200,7 +200,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-gaps inner 10px
+gaps inner 5px
 
 ## Screenshots
 bindsym Print exec --no-startup-id /home/harsh/scripts/screenshot.sh
