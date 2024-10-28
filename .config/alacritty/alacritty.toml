@@ -67,8 +67,8 @@ program = "/bin/zsh"
 decorations = "full"
 dynamic_title = true
 option_as_alt = "Both"
-opacity = 0.9
-blur = true
+opacity = 1.0
+# blur = true
 #startup_mode = "Maximized"
 
 [window.dimensions]
@@ -76,5 +76,5 @@ columns = 160
 lines = 80
 
 [window.padding]
-x = 4
-y = 4
+x = 2
+y = 1

@@ -39,6 +39,8 @@ return {
 				"clangd",
 				"pyright",
 				"bashls",
+				"cssls",
+				"golangci_lint_ls",
 			}
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -65,6 +67,10 @@ return {
 
 			lspconfig.denols.setup({
 				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+			})
+
+			lspconfig.svelte.setup({
+				root_dir = lspconfig.util.root_pattern("svelte.config.js"),
 			})
 
 			lspconfig.ts_ls.setup({

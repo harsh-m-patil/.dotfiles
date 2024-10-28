@@ -113,6 +113,7 @@ export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 export EDITOR='nvim'
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8

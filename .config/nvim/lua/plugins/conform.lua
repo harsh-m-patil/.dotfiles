@@ -9,14 +9,19 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				javascript = { "prettierd" },
+				html = { "prettierd" },
+				css = { "prettierd" },
+				markdown = { "prettierd" },
 				typescript = { "prettierd" },
 				java = { "google_java_format" },
 				go = { "gofumpt" },
 				c = { "clang_format" },
 				cpp = { "clang_format" },
+				python = { "ast_grep" },
 			},
 			format_on_save = {
 				-- Enable auto-formatting on save
+				timeout_ms = 500,
 				lsp_fallback = true,
 			},
 		})
