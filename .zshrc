@@ -115,6 +115,17 @@ alias ls='ls $LS_OPTIONS'
 export EDITOR='nvim'
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin/idea-IU-243.22562.218/bin:$PATH"
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
 
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# pnpm
+export PNPM_HOME="/home/harsh/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

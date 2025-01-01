@@ -41,6 +41,9 @@ return {
 				"bashls",
 				"cssls",
 				"golangci_lint_ls",
+				"prismals",
+				"graphql",
+				"emmet_language_server",
 			}
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -51,6 +54,11 @@ return {
 					capabilities = capabilities,
 				})
 			end
+
+			lspconfig.ts_ls.setup({
+				root_dir = lspconfig.util.root_pattern("package.json"),
+				single_file_support = false,
+			})
 
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
@@ -65,21 +73,20 @@ return {
 				},
 			})
 
-			lspconfig.denols.setup({
-				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-			})
+			-- lspconfig.denols.setup({
+			-- 	root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+			-- })
 
 			lspconfig.svelte.setup({
 				root_dir = lspconfig.util.root_pattern("svelte.config.js"),
 			})
 
-			lspconfig.ts_ls.setup({
-				root_dir = lspconfig.util.root_pattern("package.json"),
-				single_file_support = false,
+			lspconfig.astro.setup({
+				root_dir = lspconfig.util.root_pattern("astro.config.mjs"),
 			})
 
 			lspconfig.tailwindcss.setup({
-				root_dir = lspconfig.util.root_pattern("tailwind.config.js"),
+				root_dir = lspconfig.util.root_pattern("tailwind.config.js", "tailwind.config.ts"),
 			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {

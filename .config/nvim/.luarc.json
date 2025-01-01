@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "Snacks"
     ],
     "diagnostics.disable": [
         "undefined-field",
