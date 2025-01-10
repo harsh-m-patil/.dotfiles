@@ -1,5 +1,3 @@
-vim.cmd("set mouse= ")
-
 vim.cmd("let g:netrw_banner=0")
 
 -- line numbers
