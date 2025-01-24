@@ -40,6 +40,7 @@ return {
 				"pyright",
 				"bashls",
 				"cssls",
+				"astro",
 				"golangci_lint_ls",
 				"prismals",
 				"graphql",
@@ -79,10 +80,6 @@ return {
 
 			lspconfig.svelte.setup({
 				root_dir = lspconfig.util.root_pattern("svelte.config.js"),
-			})
-
-			lspconfig.astro.setup({
-				root_dir = lspconfig.util.root_pattern("astro.config.mjs"),
 			})
 
 			lspconfig.tailwindcss.setup({
