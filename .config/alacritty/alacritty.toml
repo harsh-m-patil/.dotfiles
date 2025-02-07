@@ -59,7 +59,6 @@ dynamic_title = true
 option_as_alt = "Both"
 opacity = 1.0
 # blur = true
-#startup_mode = "Maximized"
 
 [window.dimensions]
 columns = 160
@@ -73,11 +72,6 @@ y = 1
 
 live_config_reload = true
 import = [
-# uncomment the flavour you want below:
-#"~/.config/alacritty/catppuccin-latte.toml"
-# "~/.config/alacritty/catppuccin-frappe.toml"
-# "~/.config/alacritty/catppuccin-macchiato.toml"
-# "~/.config/alacritty/catppuccin-mocha.toml"
   "~/.config/alacritty/tokyo-night.toml"
 ]
 
