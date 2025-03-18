@@ -19,6 +19,7 @@ return {
 					"html",
 					"markdown",
 					"json",
+					"bash",
 				},
 				incremental_selection = {
 					enable = true,

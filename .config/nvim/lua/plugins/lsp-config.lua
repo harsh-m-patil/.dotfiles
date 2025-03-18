@@ -7,6 +7,7 @@ return {
 				ensure_installed = {
 					"stylua",
 					"prettierd",
+					"biome",
 				},
 			})
 		end,
@@ -22,18 +23,28 @@ return {
 					"html",
 					"eslint",
 					"gopls",
+					"vtsls",
+					"pylsp",
 				},
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "saghen/blink.cmp" },
 
 		-- example using `opts` for defining servers
 		opts = {
 			servers = {
 				lua_ls = {},
+				gopls = {},
+				html = {},
+				pylsp = {},
+				tailwindcss = {},
+				bashls = {},
+				vtsls = {},
+				eslint = {},
 			},
 		},
 		config = function(_, opts)

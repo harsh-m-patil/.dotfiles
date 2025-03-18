@@ -22,25 +22,6 @@ bindkey '^f' autosuggest-accept
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
-cheatsheet() {
-  cheatsheet.sh
-}
-
-wlogin() {
-  wifi-login.sh
-}
-
-wlogout() {
-  curl -sS http://10.1.0.1:2281/submit/logout.php > /dev/null
-}
-
-mkcd() {
-  mkdir -p "$1" && cd "$1"
-}
-
-zle -N cheatsheet
-bindkey "^k" cheatsheet
-
 source ~/.zsh_aliases
 
 # History
@@ -112,6 +93,7 @@ export LESS=-R
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
+alias lc='NVIM_APPNAME="leetcode" nvim'
 export EDITOR='nvim'
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"

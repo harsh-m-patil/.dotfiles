@@ -16,4 +16,54 @@ alias el='eza --icons'
 alias btop='btop --utf-force'
 alias t='tmux-session.sh'
 alias c='cheatsheet.sh'
-alias s='sesh connect $(sesh list | fzf --height 40% --reverse --border)'
+function sesh-sessions() {
+  {
+    exec </dev/tty
+    exec <&1
+    local session
+    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ' --preview 'sesh preview {}')
+    zle reset-prompt > /dev/null 2>&1 || true
+    [[ -z "$session" ]] && return
+    sesh connect $session
+  }
+}
+
+sesh-all ()
+{
+  exec </dev/tty
+  exec <&1
+  local session
+  session=$(sesh list | fzf --reverse --border --prompt '⚡  ' --preview 'sesh preview {}' )
+  zle reset-prompt > /dev/null 2>&1 || true
+  [[ -z "$session" ]] && return
+  sesh connect $session
+}
+
+cheatsheet() {
+  cheatsheet.sh
+}
+
+wlogin() {
+  wifi-login.sh
+}
+
+wlogout() {
+  curl -sS http://10.1.0.1:2281/submit/logout.php > /dev/null
+}
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+zle -N cheatsheet
+bindkey '\ek' cheatsheet
+
+zle     -N             sesh-sessions
+bindkey -M emacs '\es' sesh-sessions
+bindkey -M vicmd '\es' sesh-sessions
+bindkey -M viins '\es' sesh-sessions
+
+zle     -N             sesh-all
+bindkey -M emacs '^k' sesh-all
+bindkey -M vicmd '^k' sesh-all
+bindkey -M viins '^k' sesh-all
