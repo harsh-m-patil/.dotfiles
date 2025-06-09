@@ -64,7 +64,6 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 bindsym $alt+Tab exec --no-startup-id rofi -show window
 bindsym $mod+space exec --no-startup-id rofi -show drun 
-bindsym $alt+space exec --no-startup-id ulauncher
 bindsym $alt+w exec --no-startup-id rofi-wifi-menu.sh
 bindsym $mod+Shift+f exec --no-startup-id nautilus
 bindsym $mod+Shift+b exec  --no-startup-id zen-browser
@@ -242,6 +241,8 @@ set $surface0 #363a4f
 set $base #24273a
 set $mantle #1e2030
 set $crust #181926
+
+smart_borders on
 
 # target                 title     bg    text   indicator  border
 client.focused           $lavender $base $text  $rosewater $lavender

@@ -1,7 +1,5 @@
 vim.cmd("set mouse= ")
 
-vim.cmd("let g:netrw_banner=0")
-
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -26,4 +24,4 @@ vim.opt.hlsearch = true
 vim.opt.cursorline = true
 
 -- display colorcolumn
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"

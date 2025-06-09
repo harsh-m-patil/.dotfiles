@@ -55,8 +55,8 @@ mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
-zle -N cheatsheet
-bindkey '\ek' cheatsheet
+# zle -N cheatsheet
+# bindkey '\ek' cheatsheet
 
 zle     -N             sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
