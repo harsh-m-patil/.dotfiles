@@ -1,51 +1,58 @@
 return {
+	-- Mason: install formatters, linters
 	{
 		"williamboman/mason.nvim",
 		cmd = { "Mason", "MasonInstall", "MasonUpdate" },
 		config = function()
 			require("mason").setup({
 				ensure_installed = {
-					"stylua",
 					"prettierd",
+					"eslint_d",
 					"biome",
+					"typescript-language-server",
+					"stylua",
 				},
 			})
 		end,
 	},
+
+	-- Mason LSPConfig
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"vtsls",
 					"tailwindcss",
 					"lua_ls",
 					"bashls",
 					"html",
 					"eslint",
 					"gopls",
-					"vtsls",
 					"pylsp",
-					"pyright",
+					"dockerls",
 				},
 			})
 		end,
 	},
+
+	-- LSP config
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "saghen/blink.cmp" },
-
 		opts = {
 			servers = {
-				lua_ls = {},
-				gopls = {},
-				html = {},
-				pylsp = {},
-				tailwindcss = {},
-				bashls = {},
-				vtsls = {},
 				eslint = {},
+				html = {},
+				tailwindcss = {},
+				lua_ls = {},
+				bashls = {},
+				gopls = {},
+				pylsp = {},
 				dockerls = {},
+				postgres_lsp = {},
 			},
 		},
 
@@ -82,8 +89,10 @@ return {
 	{
 		"j-hui/fidget.nvim",
 		event = "VeryLazy",
-		opts = {
-			-- options
-		},
+		opts = {},
+	},
+	{
+		"smjonas/inc-rename.nvim",
+		opts = {},
 	},
 }

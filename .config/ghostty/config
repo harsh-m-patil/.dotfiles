@@ -29,7 +29,7 @@ font-feature = -dlig
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
-theme=tokyonight_night
+theme=catppuccin-mocha
 
 cursor-style-blink=false
 # key= value
