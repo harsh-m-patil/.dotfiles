@@ -2,7 +2,6 @@
   "margin-top" : 5,
     "margin-left": 10,
     "margin-right": 10,
-    "height" : 30,
     "modules-left": [
       "hyprland/window"
     ],
@@ -18,7 +17,7 @@
     ],
     "hyprland/window": {
       "format": "{}",
-      "max-length": 35,
+      "max-length": 45,
       "rewrite": {
         "": "Harsh"
       },
@@ -65,12 +64,17 @@
       "format-icons": ["", "", "", "", ""]
     },
     "network": {
-      "format-wifi": "  {signalStrength}%",
-      "format-ethernet": "{cidr} ",
-      "tooltip-format": "{ifname} via {gwaddr} ",
-      "format-linked": "{ifname} (No IP) ",
-      "format-disconnected": " ⚠ ",
-      "format-alt": "{ifname}: {ipaddr}/{cidr}"
+      "format": "{ifname}",
+      "format-wifi": "  {signalStrength}%  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+      "format-ethernet": "   {bandwidthDownBytes}  {bandwidthUpBytes} ",
+      "format-disconnected": "Not connected",
+      "tooltip-format": "  {ifname} via {gwaddri}",
+      "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+      "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+      "tooltip-format-disconnected": "Disconnected",
+      "max-length": 50,
+      "interval": 1,
+      "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
       "format": "{icon}  {volume}%",
@@ -86,6 +90,6 @@
         "car": "",
         "default": ["", "", ""]
       },
-      "on-click": "blueman-tray"
+      "on-click": "pavucontrol"
     },
 }

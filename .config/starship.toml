@@ -11,7 +11,6 @@ $character"""
 
 # $line_break\
 # $lua\
-# $nodejs\
 # $java\
 # $c\
 # $python\
@@ -30,7 +29,7 @@ format = "[$symbol($version )  ]($style)"
 
 [lua]
 symbol = " "
-format = "[$symbol($version )  ]($style)"
+format = "[$symbol  ]($style)"
 
 [c]
 format = "[$symbol($version )  ]($style)"

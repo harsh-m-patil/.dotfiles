@@ -7,9 +7,7 @@ return {
 			require("mason").setup({
 				ensure_installed = {
 					"prettierd",
-					"eslint_d",
 					"biome",
-					"typescript-language-server",
 					"stylua",
 				},
 			})
@@ -52,7 +50,6 @@ return {
 				gopls = {},
 				pylsp = {},
 				dockerls = {},
-				postgres_lsp = {},
 			},
 		},
 
@@ -68,11 +65,11 @@ return {
 				callback = function(ev)
 					local map = vim.keymap.set
 					local mapOpts = { buffer = ev.buf, silent = true }
-					map("n", "gD", vim.lsp.buf.declaration, mapOpts)
-					map("n", "gd", vim.lsp.buf.definition, mapOpts)
-					map("n", "K", vim.lsp.buf.hover, mapOpts)
-					map("n", "gi", vim.lsp.buf.implementation, mapOpts)
-					map({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, mapOpts)
+					map("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration", unpack(mapOpts) })
+					map("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition", unpack(mapOpts) })
+					map("n", "K", vim.lsp.buf.hover, { desc = "[K] Hover Docs", unpack(mapOpts) })
+					map("n", "gi", vim.lsp.buf.implementation, { desc = "[G]oto [I]mplementation", unpack(mapOpts) })
+					map({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction", unpack(mapOpts) })
 					map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
 					map("n", "gr", vim.lsp.buf.references, mapOpts)
 					local builtin = require("telescope.builtin")

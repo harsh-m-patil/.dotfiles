@@ -28,9 +28,17 @@ return {
 		"catppuccin/nvim",
 		lazy = false,
 		name = "catppuccin",
+		opts = {
+			transparent_background = true,
+		},
 		priority = 8000,
 		config = function()
-			vim.cmd.colorscheme("catppuccin-mocha")
+			require("catppuccin").setup({
+				flavour = "mocha",
+				transparent_background = true,
+			})
+
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }

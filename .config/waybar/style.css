@@ -1,15 +1,15 @@
-@import "macchiato.css";
+@import "mocha.css";
 
 * {
   font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 window#waybar {
   background-color: rgba(0, 0, 0, 0);
   border-radius: 13px;
   transition-property: background-color;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 button {
@@ -26,17 +26,11 @@ button:hover {
   box-shadow: inset 0 -3px #ffffff;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-  background-color: @surface2;
-}
-
 #workspaces button {
   padding: 0 5px;
   background-color: transparent;
   color: #ffffff;
 }
-
 
 #workspaces button:hover {
   background: rgba(0, 0, 0, 0.2);
@@ -52,7 +46,7 @@ button:hover {
 }
 
 #mode {
-  background-color: #64727D;
+  background-color: #64727d;
   box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -64,30 +58,8 @@ button:hover {
 #network,
 #pulseaudio {
   padding: 0 10px;
-}
-
-#pulseaudio {
-  color: @maroon;
-}
-
-#network {
-  color: @yellow;
-}
-
-#temperature {
-  color: @sky;
-}
-
-#battery {
-  color: @green;
-}
-
-#clock {
-  color: @flamingo;
-}
-
-#window {
-  color: @rosewater;
+  color: @text;
+  border: 5px;
 }
 
 .modules-right,
