@@ -13,7 +13,6 @@ alias cht='cheatsheet.sh'
 alias et='eza --tree -a  --icons=always --git-ignore'
 alias lg='lazygit'
 alias el='eza --icons'
-alias btop='btop --utf-force'
 alias t='tmux-session.sh'
 alias c='cheatsheet.sh'
 function sesh-sessions() {

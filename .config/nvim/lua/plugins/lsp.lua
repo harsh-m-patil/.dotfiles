@@ -42,7 +42,6 @@ return {
 		dependencies = { "saghen/blink.cmp" },
 		opts = {
 			servers = {
-				eslint = {},
 				html = {},
 				tailwindcss = {},
 				lua_ls = {},
@@ -54,6 +53,18 @@ return {
 		},
 
 		config = function(_, opts)
+			local customizations = {
+				{ rule = "style/*", severity = "off", fixable = true },
+				{ rule = "format/*", severity = "off", fixable = true },
+				{ rule = "*-indent", severity = "off", fixable = true },
+				{ rule = "*-spacing", severity = "off", fixable = true },
+				{ rule = "*-spaces", severity = "off", fixable = true },
+				{ rule = "*-order", severity = "off", fixable = true },
+				{ rule = "*-dangle", severity = "off", fixable = true },
+				{ rule = "*-newline", severity = "off", fixable = true },
+				{ rule = "*quotes", severity = "off", fixable = true },
+				{ rule = "*semi", severity = "off", fixable = true },
+			}
 			local lspconfig = require("lspconfig")
 			for server, config in pairs(opts.servers) do
 				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
@@ -69,7 +80,12 @@ return {
 					map("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition", unpack(mapOpts) })
 					map("n", "K", vim.lsp.buf.hover, { desc = "[K] Hover Docs", unpack(mapOpts) })
 					map("n", "gi", vim.lsp.buf.implementation, { desc = "[G]oto [I]mplementation", unpack(mapOpts) })
-					map({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction", unpack(mapOpts) })
+					map(
+						{ "n", "v" },
+						"<space>ca",
+						vim.lsp.buf.code_action,
+						{ desc = "[C]ode [A]ction", unpack(mapOpts) }
+					)
 					map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
 					map("n", "gr", vim.lsp.buf.references, mapOpts)
 					local builtin = require("telescope.builtin")
@@ -80,6 +96,31 @@ return {
 					map("n", "<leader>ds", builtin.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
 					map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
 				end,
+
+				lspconfig.eslint.setup({
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+						"html",
+						"markdown",
+						"json",
+						"jsonc",
+						"css",
+					},
+					settings = {
+						rulesCustomizations = customizations,
+					},
+					on_attach = function(client, bufnr)
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = bufnr,
+							command = "EslintFixAll",
+						})
+					end,
+				}),
 			})
 		end,
 	},

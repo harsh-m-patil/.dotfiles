@@ -1,7 +1,14 @@
 return {
-	"lukas-reineke/indent-blankline.nvim",
-	main = "ibl",
-	---@module "ibl"
-	---@type ibl.config
-	opts = {},
+	"echasnovski/mini.indentscope",
+	version = false,
+	config = function()
+		require("mini.indentscope").setup({
+			symbol = "╎", -- You can use "╎", "▏", etc.
+			options = { try_as_border = true },
+			draw = {
+				delay = 0,
+				animation = require("mini.indentscope").gen_animation.none(),
+			},
+		})
+	end,
 }
