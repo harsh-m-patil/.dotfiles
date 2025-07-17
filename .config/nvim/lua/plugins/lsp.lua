@@ -26,7 +26,7 @@ return {
 					"lua_ls",
 					"bashls",
 					"html",
-					"eslint",
+					-- "eslint",
 					"gopls",
 					"pylsp",
 					"dockerls",
@@ -49,6 +49,8 @@ return {
 				gopls = {},
 				pylsp = {},
 				dockerls = {},
+				jsonls = {},
+				prismals = {},
 			},
 		},
 

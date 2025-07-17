@@ -1,11 +1,23 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 		config = function()
-			require("tokyonight").setup()
-			vim.cmd.colorscheme("tokyonight-moon")
+			require("tokyonight").setup({
+				light_style = "day",
+				transparent = false,
+				terminal_colors = true,
+				style = "night",
+				styles = {
+					comments = { italic = true },
+					keywords = { italic = true },
+				},
+				on_colors = function(colors)
+					colors.bg = colors.black
+				end,
+			})
+			vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
 	{
@@ -26,7 +38,7 @@ return {
 	},
 	{
 		"catppuccin/nvim",
-		lazy = false,
+		lazy = true,
 		name = "catppuccin",
 		-- opts = {
 		-- 	transparent_background = true,
@@ -36,6 +48,12 @@ return {
 			require("catppuccin").setup({
 				flavour = "mocha",
 				-- transparent_background = true,
+				color_overrides = {
+					mocha = {
+						-- more darker background
+						base = "#000000",
+					},
+				},
 			})
 
 			vim.cmd.colorscheme("catppuccin")
