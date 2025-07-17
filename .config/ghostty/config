@@ -28,7 +28,8 @@ font-feature = -dlig
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
-theme=catppuccin-mocha
+theme=tokyonight_night
+window-decoration=none
 
 cursor-style-blink=false
 # key= value

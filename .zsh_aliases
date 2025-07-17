@@ -15,6 +15,8 @@ alias lg='lazygit'
 alias el='eza --icons'
 alias t='tmux-session.sh'
 alias c='cheatsheet.sh'
+alias sv='cat "$(fd -e svg . ~/SVGs | fzf)" | wl-copy'
+alias svg="fd -e svg . ~/SVGs | fzf --preview 'kitty +kitten icat {} 2>/dev/null' --preview-window=right:70% | xargs cat | wl-copy"
 function sesh-sessions() {
   {
     exec </dev/tty
@@ -54,6 +56,15 @@ mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
+svgclip() {
+  local svg
+  svg=$(fd -e svg . ~/SVGs | fzf --preview 'kitty +kitten icat {} 2>/dev/null' --preview-window=right:70%)
+  [[ -n "$svg" ]] && cat "$svg" | wl-copy
+  zle reset-prompt
+}
+zle -N svgclip
+
+
 # zle -N cheatsheet
 # bindkey '\ek' cheatsheet
 
@@ -66,3 +77,8 @@ zle     -N             sesh-all
 bindkey -M emacs '^k' sesh-all
 bindkey -M vicmd '^k' sesh-all
 bindkey -M viins '^k' sesh-all
+
+bindkey -M emacs '\es' svgclip
+bindkey -M viins '\es' svgclip
+bindkey -M vicmd '\es' svgclip
+
