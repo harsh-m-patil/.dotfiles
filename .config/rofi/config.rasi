@@ -30,12 +30,13 @@ configuration{
 }
 
 element-text, element-icon , mode-switcher {
-    background-color: inherit;
-    text-color:       inherit;
+  background-color: inherit;
+  text-color:       inherit;
 }
 
 window {
     height: 360px;
+    width: 1000px;
     border: 2px;
     border-radius: 15px;
     border-color: @border-col;
@@ -85,7 +86,7 @@ listview {
 element {
     padding: 5px;
     background-color: @bg-col;
-    text-color: @fg-col  ;
+    text-color: @fg-col;
 }
 
 element-icon {
@@ -93,13 +94,13 @@ element-icon {
 }
 
 element selected {
-    background-color:  @selected-col ;
-    text-color: @fg-col2  ;
+  background-color:  @selected-col;
+  text-color: @fg-col2;
 }
 
 mode-switcher {
     spacing: 0;
-  }
+}
 
 button {
     padding: 10px;

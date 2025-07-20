@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			require("tokyonight").setup({
@@ -38,7 +38,7 @@ return {
 	},
 	{
 		"catppuccin/nvim",
-		lazy = true,
+		lazy = false,
 		name = "catppuccin",
 		-- opts = {
 		-- 	transparent_background = true,
@@ -51,7 +51,18 @@ return {
 				color_overrides = {
 					mocha = {
 						-- more darker background
-						base = "#000000",
+						base = "#11111b",
+					},
+				},
+
+				integrations = {
+					harpoon = true,
+					neotree = true,
+					cmp = true,
+					grug_far = true,
+					telescope = {
+						enabled = true,
+						style = "classic",
 					},
 				},
 			})

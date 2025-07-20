@@ -51,22 +51,23 @@ return {
 				dockerls = {},
 				jsonls = {},
 				prismals = {},
+				cssls = {},
 			},
 		},
 
 		config = function(_, opts)
-			local customizations = {
-				{ rule = "style/*", severity = "off", fixable = true },
-				{ rule = "format/*", severity = "off", fixable = true },
-				{ rule = "*-indent", severity = "off", fixable = true },
-				{ rule = "*-spacing", severity = "off", fixable = true },
-				{ rule = "*-spaces", severity = "off", fixable = true },
-				{ rule = "*-order", severity = "off", fixable = true },
-				{ rule = "*-dangle", severity = "off", fixable = true },
-				{ rule = "*-newline", severity = "off", fixable = true },
-				{ rule = "*quotes", severity = "off", fixable = true },
-				{ rule = "*semi", severity = "off", fixable = true },
-			}
+			-- local customizations = {
+			-- 	{ rule = "style/*", severity = "off", fixable = true },
+			-- 	{ rule = "format/*", severity = "off", fixable = true },
+			-- 	{ rule = "*-indent", severity = "off", fixable = true },
+			-- 	{ rule = "*-spacing", severity = "off", fixable = true },
+			-- 	{ rule = "*-spaces", severity = "off", fixable = true },
+			-- 	{ rule = "*-order", severity = "off", fixable = true },
+			-- 	{ rule = "*-dangle", severity = "off", fixable = true },
+			-- 	{ rule = "*-newline", severity = "off", fixable = true },
+			-- 	{ rule = "*quotes", severity = "off", fixable = true },
+			-- 	{ rule = "*semi", severity = "off", fixable = true },
+			-- }
 			local lspconfig = require("lspconfig")
 			for server, config in pairs(opts.servers) do
 				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
@@ -99,30 +100,30 @@ return {
 					map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
 				end,
 
-				lspconfig.eslint.setup({
-					filetypes = {
-						"javascript",
-						"javascriptreact",
-						"javascript.jsx",
-						"typescript",
-						"typescriptreact",
-						"typescript.tsx",
-						"html",
-						"markdown",
-						"json",
-						"jsonc",
-						"css",
-					},
-					settings = {
-						rulesCustomizations = customizations,
-					},
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							buffer = bufnr,
-							command = "EslintFixAll",
-						})
-					end,
-				}),
+				-- 		lspconfig.eslint.setup({
+				-- 			filetypes = {
+				-- 				"javascript",
+				-- 				"javascriptreact",
+				-- 				"javascript.jsx",
+				-- 				"typescript",
+				-- 				"typescriptreact",
+				-- 				"typescript.tsx",
+				-- 				"html",
+				-- 				"markdown",
+				-- 				"json",
+				-- 				"jsonc",
+				-- 				"css",
+				-- 			},
+				-- 			settings = {
+				-- 				rulesCustomizations = customizations,
+				-- 			},
+				-- 			on_attach = function(client, bufnr)
+				-- 				vim.api.nvim_create_autocmd("BufWritePre", {
+				-- 					buffer = bufnr,
+				-- 					command = "EslintFixAll",
+				-- 				})
+				-- 			end,
+				-- 		}),
 			})
 		end,
 	},

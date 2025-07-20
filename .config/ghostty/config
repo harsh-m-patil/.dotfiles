@@ -26,6 +26,8 @@ font-feature = -liga
 font-feature = -dlig
 # background-blur=true
 #
+background = #11111b
+
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
 theme=tokyonight_night
