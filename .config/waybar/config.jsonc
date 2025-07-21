@@ -71,7 +71,8 @@
       "",
       "",
       ""
-    ]
+    ],
+    "interval": 5,
   },
   "network": {
     "format": "{ifname}",
