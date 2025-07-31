@@ -2,7 +2,7 @@ return {
 	{
 		"stevearc/oil.nvim",
 		keys = {
-			{ "<leader>n", "<cmd>Oil<cr>", desc = "Open oil.nvim" },
+			{ "<leader>o", "<cmd>Oil<cr>", desc = "Open oil.nvim" },
 		},
 		opts = {},
 		config = function()
