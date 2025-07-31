@@ -78,6 +78,7 @@ return {
 			{ "<leader>no", "<cmd>Neogit<cr>", desc = "Neogit" },
 			{ "<leader>nd", "<cmd>Neogit diff<cr>", desc = "Git diff" },
 			{ "<leader>nc", "<cmd>Neogit commit<cr>", desc = "Git commit" },
+			{ "<leader>np", "<cmd>Neogit push<cr>", desc = "Git push" },
 		},
 	},
 }
