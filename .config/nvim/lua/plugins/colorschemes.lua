@@ -29,42 +29,19 @@ return {
 		end,
 	},
 	{
-		"rebelot/kanagawa.nvim",
-		lazy = true,
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("kanagawa-wave")
-		end,
-	},
-	{
 		"catppuccin/nvim",
 		lazy = false,
 		name = "catppuccin",
-		-- opts = {
-		-- 	transparent_background = true,
-		-- },
 		priority = 8000,
 		config = function()
 			require("catppuccin").setup({
 				flavour = "mocha",
-				-- transparent_background = true,
 				color_overrides = {
 					mocha = {
-						-- more darker background
 						base = "#11111b",
 					},
 				},
-
-				integrations = {
-					harpoon = true,
-					neotree = true,
-					cmp = true,
-					grug_far = true,
-					telescope = {
-						enabled = true,
-						style = "classic",
-					},
-				},
+				auto_integrations = true,
 			})
 
 			vim.cmd.colorscheme("catppuccin")

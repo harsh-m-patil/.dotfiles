@@ -1,6 +1,7 @@
 vim.cmd("set mouse= ")
 vim.o.breakindent = true
 vim.g.have_nerd_font = true
+vim.o.winborder = "rounded"
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
