@@ -5,8 +5,7 @@ $directory\
 $git_branch\
 $git_metrics\
 $fill\
-$cmd_duration \
-$battery
+$cmd_duration 
 $character"""
 
 # $line_break\

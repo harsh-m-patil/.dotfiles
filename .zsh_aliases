@@ -1,4 +1,6 @@
 # aliases 
+alias ls='ls $LS_OPTIONS'
+alias leet='NVIM_APPNAME="leetcode" nvim leetcode.nvim'
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
@@ -68,16 +70,13 @@ zle -N svgclip
 # zle -N cheatsheet
 # bindkey '\ek' cheatsheet
 
-zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-bindkey -M vicmd '\es' sesh-sessions
-bindkey -M viins '\es' sesh-sessions
-
-zle     -N             sesh-all
+# CTRL K
+zle     -N            sesh-all
 bindkey -M emacs '^k' sesh-all
 bindkey -M vicmd '^k' sesh-all
 bindkey -M viins '^k' sesh-all
 
+# ALT S
 bindkey -M emacs '\es' svgclip
 bindkey -M viins '\es' svgclip
 bindkey -M vicmd '\es' svgclip

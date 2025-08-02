@@ -92,18 +92,11 @@ export LESS=-R
 
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
-alias ls='ls $LS_OPTIONS'
-alias lc='NVIM_APPNAME="leetcode" nvim'
 export EDITOR='nvim'
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.local/bin/idea-IU-243.22562.218/bin:$PATH"
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
-export XCURSOR_THEME=Bibata-Modern-Classic
-export XCURSOR_SIZE=24
-
-
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
