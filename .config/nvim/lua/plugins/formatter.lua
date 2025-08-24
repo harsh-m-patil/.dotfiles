@@ -18,20 +18,21 @@ return {
 				typescriptreact = { "prettierd" },
 				java = { "clang_format" },
 				go = { "gofumpt" },
+				tex = { "bibtex-tidy" },
 			},
-			format_on_save = {
-				-- Enable auto-formatting on save
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
+			-- format_on_save = {
+			-- 	-- Enable auto-formatting on save
+			-- 	timeout_ms = 500,
+			-- 	lsp_fallback = true,
+			-- },
 		})
 
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			callback = function(args)
-				conform.format({ bufnr = args.buf })
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 	group = augroup,
+		-- 	callback = function(args)
+		-- 		conform.format({ bufnr = args.buf })
+		-- 	end,
+		-- })
 
 		vim.keymap.set("n", "<leader>fm", function()
 			conform.format({ async = true })

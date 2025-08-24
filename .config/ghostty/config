@@ -24,9 +24,11 @@ font-size = 16
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
-# background-blur=true
+background-blur=true
+background-opacity = 0.80
 #
 background = #11111b
+window-padding-x = 10
 
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
