@@ -1,40 +1,24 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     config = function()
-      local configs = require("nvim-treesitter.configs")
-      configs.setup({
-        ensure_installed = {
-          "c",
-          "lua",
-          "vim",
-          "vimdoc",
-          "java",
-          "css",
-          "go",
-          "javascript",
-          "typescript",
-          "html",
-          "markdown",
-          "json",
-          "bash",
-        },
-        incremental_selection = {
+      require'nvim-treesitter.configs'.setup {
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" , "typescript" , "javascript", "java" , "css", "json", "prisma" },
+        auto_install = false,
+        highlight = {
           enable = true,
-          keymaps = {
-            init_selection = "<C-space>",
-            node_incremental = "<C-space>",
-            scope_incremental = false,
-            node_decremental = "<bs>",
-          },
+          -- disable for large files
+          disable = function(lang, buf)
+            local max_filesize = 100 * 1024 -- 100 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            if ok and stats and stats.size > max_filesize then
+              return true
+            end
+          end,
+          additional_vim_regex_highlighting = false,
         },
-        auto_installed = true,
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
+      }
     end,
-  },
+  }
 }

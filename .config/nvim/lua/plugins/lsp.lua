@@ -1,127 +1,62 @@
 return {
-	-- Mason: install formatters, linters
-	{
-		"williamboman/mason.nvim",
-		cmd = { "Mason", "MasonInstall", "MasonUpdate" },
-		config = function()
-			require("mason").setup({
-				ensure_installed = {
-					"prettierd",
-					"biome",
-					"stylua",
-				},
-			})
-		end,
-	},
+  {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        lua_ls = {},
+        gopls = {},
+        jsonls = {},
+        dockerls = {},
+        prismals = {},
+        tailwindcss = {},
+        vtsls = {},
+        tinymist = {},
+        clangd = {},
+        biome = {},
+      }
+    },
+    dependencies = {
+      {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+          library = {
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      for server in pairs(opts.servers) do
+        vim.lsp.enable(server)
+      end
 
-	-- Mason LSPConfig
-	{
-		"williamboman/mason-lspconfig.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"vtsls",
-					"tailwindcss",
-					"lua_ls",
-					"bashls",
-					"html",
-					-- "eslint",
-					"gopls",
-					"pylsp",
-					"dockerls",
-				},
-			})
-		end,
-	},
+      vim.api.nvim_create_autocmd('LspAttach', {
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" }),
+        vim.keymap.set("n", "g.", vim.lsp.buf.code_action, { desc = "Code Actions" }),
+        group = vim.api.nvim_create_augroup('my.lsp', {}),
+        callback = function(args)
+          local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+          if not client then return end
 
-	-- LSP config
-	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "saghen/blink.cmp" },
-		opts = {
-			servers = {
-				html = {},
-				tailwindcss = {},
-				lua_ls = {},
-				bashls = {},
-				gopls = {},
-				pylsp = {},
-				dockerls = {},
-				jsonls = {},
-				prismals = {},
-				cssls = {},
-			},
-		},
-
-		config = function(_, opts)
-			local lspconfig = require("lspconfig")
-			for server, config in pairs(opts.servers) do
-				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-				lspconfig[server].setup(config)
-			end
-
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-				callback = function(ev)
-					local map = vim.keymap.set
-					local mapOpts = { buffer = ev.buf, silent = true }
-					map("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration", unpack(mapOpts) })
-					map("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition", unpack(mapOpts) })
-					map("n", "K", vim.lsp.buf.hover, { desc = "[K] Hover Docs", unpack(mapOpts) })
-					map("n", "gi", vim.lsp.buf.implementation, { desc = "[G]oto [I]mplementation", unpack(mapOpts) })
-					map(
-						{ "n", "v" },
-						"<space>ca",
-						vim.lsp.buf.code_action,
-						{ desc = "[C]ode [A]ction", unpack(mapOpts) }
-					)
-					map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-					map("n", "gr", vim.lsp.buf.references, mapOpts)
-					local builtin = require("telescope.builtin")
-					map("n", "<leader>gd", builtin.lsp_definitions, { desc = "[G]oto [D]efinition" })
-					map("n", "<leader>gr", builtin.lsp_references, { desc = "[G]oto [R]eferences" })
-					map("n", "<leader>gI", builtin.lsp_implementations, { desc = "[G]oto [I]mplementation" })
-					map("n", "<leader>D", builtin.lsp_type_definitions, { desc = "Type [D]efinition" })
-					map("n", "<leader>ds", builtin.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
-					map("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
-				end,
-
-				-- 	lspconfig.eslint.setup({
-				-- 		filetypes = {
-				-- 			"javascript",
-				-- 			"javascriptreact",
-				-- 			"javascript.jsx",
-				-- 			"typescript",
-				-- 			"typescriptreact",
-				-- 			"typescript.tsx",
-				-- 			"html",
-				-- 			"markdown",
-				-- 			"json",
-				-- 			"jsonc",
-				-- 			"css",
-				-- 		},
-				-- 		settings = {
-				-- 			rulesCustomizations = customizations,
-				-- 		},
-				-- 		on_attach = function(client, bufnr)
-				-- 			vim.api.nvim_create_autocmd("BufWritePre", {
-				-- 				buffer = bufnr,
-				-- 				command = "EslintFixAll",
-				-- 			})
-				-- 		end,
-				-- 	}),
-			})
-		end,
-	},
-	{
-		"j-hui/fidget.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-	{
-		"smjonas/inc-rename.nvim",
-		opts = {},
-	},
+          if client:supports_method('textDocument/formatting') then
+            vim.keymap.set("n", "<leader>fm",
+              function() vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 }) end,
+              { desc = "Format Document", buffer = args.buf })
+            -- vim.api.nvim_create_autocmd('BufWritePre', {
+            --   group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+            --   buffer = args.buf,
+            --   callback = function()
+            --     vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+            --   end,
+            -- })
+          end
+        end,
+      })
+    end,
+  }
 }
