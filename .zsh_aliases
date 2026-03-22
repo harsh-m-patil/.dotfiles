@@ -42,42 +42,12 @@ sesh-all ()
   sesh connect $session
 }
 
-cheatsheet() {
-  cheatsheet.sh
-}
-
-wlogin() {
-  wifi-login.sh
-}
-
-wlogout() {
-  curl -sS http://10.1.0.1:2281/submit/logout.php > /dev/null
-}
-
 mkcd() {
   mkdir -p "$1" && cd "$1"
 }
-
-svgclip() {
-  local svg
-  svg=$(fd -e svg . ~/SVGs | fzf --preview 'kitty +kitten icat {} 2>/dev/null' --preview-window=right:70%)
-  [[ -n "$svg" ]] && cat "$svg" | wl-copy
-  zle reset-prompt
-}
-zle -N svgclip
-
-
-# zle -N cheatsheet
-# bindkey '\ek' cheatsheet
 
 # CTRL K
 zle     -N            sesh-all
 bindkey -M emacs '^k' sesh-all
 bindkey -M vicmd '^k' sesh-all
 bindkey -M viins '^k' sesh-all
-
-# ALT S
-bindkey -M emacs '\es' svgclip
-bindkey -M viins '\es' svgclip
-bindkey -M vicmd '\es' svgclip
-

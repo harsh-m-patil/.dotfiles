@@ -22,7 +22,7 @@ bindkey '^f' autosuggest-accept
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
-source ~/.zsh_aliases
+source ~/.dotfiles/.zsh_aliases
 
 # History
 HISTSIZE=5000
@@ -96,4 +96,3 @@ export EDITOR='nvim'
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
