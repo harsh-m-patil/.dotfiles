@@ -16,7 +16,8 @@ return {
     require("telescope").setup {
       pickers = {
         find_files = {
-          theme = "ivy"
+          theme = "ivy",
+          previewer = false
         },
         help_tags = {
           theme = "ivy"

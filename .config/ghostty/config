@@ -8,6 +8,6 @@ font-feature = -dlig
 #
 # background = #11111b
 window-padding-x = 10
-theme=tokyonight_moon
+theme=TokyoNight
 window-decoration=none
 cursor-style-blink=false

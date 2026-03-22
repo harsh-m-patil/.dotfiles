@@ -97,15 +97,3 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-source ~/.completions
-
-# bun completions
-[ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"

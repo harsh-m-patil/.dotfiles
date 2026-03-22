@@ -6,14 +6,14 @@
     "hyprland/window"
   ],
   "modules-center": [
-    "hyprland/workspaces",
+    "hyprland/workspaces"
   ],
   "modules-right": [
     "pulseaudio",
     "network",
     "temperature",
     "battery",
-    "clock",
+    "clock"
   ],
   "hyprland/window": {
     "format": "{}",
@@ -21,19 +21,19 @@
     "rewrite": {
       "": "Harsh"
     },
-    "separate-outputs": true,
+    "separate-outputs": true
   },
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "active": " ",
+      "active": " "
     },
     "sort-by-number": true,
     "persistent-workspaces": {
       "*": 6, // 5 workspaces by default on every monitor
       "HDMI-A-1": 3 // but only three on HDMI-A-1
-    },
+    }
   },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -72,7 +72,7 @@
       "",
       ""
     ],
-    "interval": 5,
+    "interval": 5
   },
   "network": {
     "format": "{ifname}",
@@ -106,5 +106,5 @@
       ]
     },
     "on-click": "pavucontrol"
-  },
+  }
 }
