@@ -9,6 +9,7 @@
     enable = true;
     initContent = builtins.readFile ../.zshrc;
   };
+  programs.gh.enable = true;
   home.file.".config/hypr".source = ./config/hypr;
   home.file.".config/nvim".source = ./config/nvim;
   home.file.".config/ghostty".source = ./config/ghostty;

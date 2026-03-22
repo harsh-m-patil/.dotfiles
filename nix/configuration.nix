@@ -122,7 +122,6 @@
     nodejs
     go
     hyprpaper
-    gh
   ];
 
   fonts.packages = with pkgs; [
