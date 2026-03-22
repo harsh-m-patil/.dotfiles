@@ -122,6 +122,10 @@
     nodejs
     go
     hyprpaper
+    unzip
+    tree
+    eza
+    gitleaks
   ];
 
   fonts.packages = with pkgs; [
