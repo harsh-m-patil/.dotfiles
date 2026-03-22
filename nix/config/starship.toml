@@ -1,0 +1,96 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_metrics\
+$fill\
+$cmd_duration 
+$character"""
+
+# $line_break\
+# $lua\
+# $java\
+# $c\
+# $python\
+# $rust\
+# $git_state\
+# $git_status\
+# $jobs
+#$time\
+
+[nodejs]
+format = "[$symbol($version )  ]($style)"
+
+[java]
+symbol = " "
+format = "[$symbol($version )  ]($style)"
+
+[lua]
+symbol = " "
+format = "[$symbol  ]($style)"
+
+[c]
+format = "[$symbol($version )  ]($style)"
+
+[python]
+format = "[$symbol($version )  ]($style)"
+
+[rust]
+format = "[$symbol($version )  ]($style)"
+
+[fill]
+symbol = " "
+
+[directory]
+style = "blue"
+read_only = " "
+truncation_length = 2
+truncate_to_repo = true
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vicmd_symbol = "[❮](green)"
+
+[git_branch]
+symbol = " "
+format = "[$branch]($style) "
+style = "bright-black"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "cyan"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_metrics]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+
+[memory_usage]
+symbol = " "
+
+[battery]
+full_symbol = '  '
+charging_symbol = '⚡️ '
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and threshold
+threshold = 100
+style = 'blue'
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 10%
+threshold = 76
+style = 'bold red'
+
+[time]
+disabled = false
+style = "bold white"
+use_12hr = true
+format = "[$time]($style)"
+

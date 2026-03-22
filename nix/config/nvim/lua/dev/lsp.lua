@@ -1,0 +1,16 @@
+-- local client = vim.lsp.start_client({
+--   name = "resume_lsp",
+--   cmd = { "/home/harsh/repos/projects/ats-optimus-prime-lsp/main" },
+-- })
+--
+-- if not client then
+--   print("Failed to start LSP client")
+--   return
+-- end
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "typst",
+--   callback = function()
+--     vim.lsp.buf_attach_client(0, client)
+--   end,
+-- })
