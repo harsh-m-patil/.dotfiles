@@ -54,6 +54,7 @@
     xwayland.enable = true;
   };
   programs.waybar.enable = true;
+  programs.zsh.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -118,8 +119,6 @@
     nodejs
     go
     hyprpaper
-    zsh
-    gh
   ];
 
   fonts.packages = with pkgs; [
