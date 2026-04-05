@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{  config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -13,6 +13,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -65,6 +66,10 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  virtualisation.docker = {
+    enable = true;
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -88,7 +93,7 @@
   users.users.harshmpatil = {
     isNormalUser = true;
     description = "harshmpatil";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -99,6 +104,10 @@
   };
   # Install firefox.
   programs.firefox.enable = true;
+   programs.neovim = {
+    enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -106,7 +115,6 @@
   environment.systemPackages = with pkgs; [
     vim 
     wget
-    neovim
     git
     ghostty
     stow
@@ -122,10 +130,15 @@
     nodejs
     go
     hyprpaper
+    hyprpicker
     unzip
     tree
     eza
     gitleaks
+    uv
+    yt-dlp
+    opencode
+    quickshell
   ];
 
   fonts.packages = with pkgs; [
@@ -153,6 +166,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  # networking.firewall.checkReversePath = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
