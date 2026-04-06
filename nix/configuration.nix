@@ -106,7 +106,6 @@
   programs.firefox.enable = true;
    programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
   };
 
   # Allow unfree packages
@@ -114,11 +113,14 @@
 
   environment.systemPackages = with pkgs; [
     vim 
+    jq
     wget
     git
     ghostty
     stow
     fzf
+    fd
+    ripgrep
     fastfetch
     gnumake
     cmake
@@ -138,6 +140,7 @@
     uv
     yt-dlp
     opencode
+    typst
     quickshell
   ];
 

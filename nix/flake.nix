@@ -14,10 +14,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
   in {
@@ -30,13 +29,6 @@
 
       modules = [
         ./configuration.nix
-
-        # Apply overlay globally
-        {
-          nixpkgs.overlays = [
-            neovim-nightly-overlay.overlays.default
-          ];
-        }
 
         home-manager.nixosModules.home-manager
         {
