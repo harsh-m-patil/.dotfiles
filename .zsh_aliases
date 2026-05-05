@@ -1,4 +1,5 @@
 # aliases 
+#
 alias ls='ls $LS_OPTIONS'
 alias leet='NVIM_APPNAME="leetcode" nvim leetcode.nvim'
 alias cp="cp -i"                                                # Confirm before overwriting something

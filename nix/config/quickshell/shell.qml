@@ -28,6 +28,8 @@ ShellRoot {
     property int memUsage: 0
     property int diskUsage: 0
     property int volumeLevel: 0
+    property int batteryLevel: 0
+    property string batteryStatus: ""
     property string activeWindow: "Window"
     property string currentLayout: "Tile"
 
@@ -115,6 +117,23 @@ ShellRoot {
         Component.onCompleted: running = true
     }
 
+    // Battery stats
+    Process {
+        id: batteryProc
+        command: ["sh", "-c", "for bat in /sys/class/power_supply/BAT*; do [ -d \"$bat\" ] || continue; cap=$(cat \"$bat/capacity\" 2>/dev/null); stat=$(cat \"$bat/status\" 2>/dev/null); printf '%s %s\\n' \"$cap\" \"$stat\"; exit; done"]
+        stdout: SplitParser {
+            onRead: data => {
+                if (!data) return
+                var parts = data.trim().split(/\s+/)
+                if (parts.length > 0) {
+                    batteryLevel = parseInt(parts[0]) || 0
+                    batteryStatus = parts.slice(1).join(" ")
+                }
+            }
+        }
+        Component.onCompleted: running = true
+    }
+
     // Active window title
     Process {
         id: windowProc
@@ -153,6 +172,7 @@ ShellRoot {
             memProc.running = true
             diskProc.running = true
             volProc.running = true
+            batteryProc.running = true
         }
     }
 
@@ -184,7 +204,7 @@ ShellRoot {
             screen: modelData
 
             anchors {
-                top: true
+                bottom: true
                 left: true
                 right: true
             }
@@ -369,6 +389,24 @@ ShellRoot {
                     Text {
                         text: "Vol: " + volumeLevel + "%"
                         color: root.colPurple
+                        font.pixelSize: root.fontSize
+                        font.family: root.fontFamily
+                        font.bold: true
+                        Layout.rightMargin: 8
+                    }
+
+                    Rectangle {
+                        Layout.preferredWidth: 1
+                        Layout.preferredHeight: 16
+                        Layout.alignment: Qt.AlignVCenter
+                        Layout.leftMargin: 0
+                        Layout.rightMargin: 8
+                        color: root.colMuted
+                    }
+
+                    Text {
+                        text: batteryStatus ? ("Bat: " + batteryLevel + "% (" + batteryStatus + ")") : ("Bat: " + batteryLevel + "%")
+                        color: batteryLevel <= 20 ? root.colRed : (batteryStatus === "Charging" ? root.colCyan : root.colFg)
                         font.pixelSize: root.fontSize
                         font.family: root.fontFamily
                         font.bold: true
