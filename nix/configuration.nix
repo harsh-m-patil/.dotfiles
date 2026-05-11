@@ -108,6 +108,8 @@
     opencode
     typst
 		hyprshot
+		telegram-desktop
+		mpv
 
     unstable.neovim
     quickshell
@@ -127,7 +129,11 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    extra-substituters = [ "https://vicinae.cachix.org" ];
+    extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
+  };
 
   system.stateVersion = "25.11";
 }

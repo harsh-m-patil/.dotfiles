@@ -37,6 +37,25 @@ ShellRoot {
     property var lastCpuIdle: 0
     property var lastCpuTotal: 0
 
+    // Bar visibility
+    property bool barVisible: true
+
+    IpcHandler {
+        target: "bar"
+
+        function toggle() {
+            root.barVisible = !root.barVisible
+        }
+
+        function show() {
+            root.barVisible = true
+        }
+
+        function hide() {
+            root.barVisible = false
+        }
+    }
+
     // CPU usage
     Process {
         id: cpuProc
@@ -202,6 +221,7 @@ ShellRoot {
         PanelWindow {
             property var modelData
             screen: modelData
+            visible: root.barVisible
 
             anchors {
                 bottom: true

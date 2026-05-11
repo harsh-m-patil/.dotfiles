@@ -15,13 +15,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    vicinae.url = "github:vicinaehq/vicinae";
+
+    vicinae-extensions = {
+      url = "github:vicinaehq/extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 		 zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, vicinae, ... }@inputs:
   let
     system = "x86_64-linux";
   in {
@@ -58,6 +65,8 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
+            sharedModules = [ vicinae.homeManagerModules.default ];
+            extraSpecialArgs = { inherit inputs; };
 
             users.harshmpatil = import ./home.nix;
           };
