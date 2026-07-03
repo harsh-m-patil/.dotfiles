@@ -15,14 +15,19 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Load zsh-completions
-autoload -U compinit && compinit
+# Drop stale completion dumps (e.g. old/broken Homebrew completion paths).
+autoload -U compinit
+for dump in ~/.zcompdump*(N); do
+  grep -q '/opt/homebrew/share/zsh/site-functions/_brew' "$dump" 2>/dev/null && rm -f "$dump"
+done
+compinit
 
 bindkey -v
 bindkey '^f' autosuggest-accept
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
-source ~/.dotfiles/.zsh_aliases
+source ~/.zsh_aliases
 
 # History
 HISTSIZE=5000
@@ -91,5 +96,11 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
 export LS_OPTIONS='--color=auto'
-eval "$(dircolors -b)"
+if command -v dircolors >/dev/null 2>&1; then
+  eval "$(dircolors -b)"
+else
+  export CLICOLOR=1
+fi
 export EDITOR='nvim'
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
