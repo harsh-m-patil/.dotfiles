@@ -1,7 +1,8 @@
 vim.pack.add({
 	"https://github.com/folke/lazydev.nvim",
+	"https://github.com/saghen/blink.lib",
 	"https://github.com/saghen/blink.cmp",
-	"https://github.com/rafamadriz/friendly-snippets"
+	"https://github.com/rafamadriz/friendly-snippets",
 })
 
 require('lazydev').setup({
