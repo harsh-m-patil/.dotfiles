@@ -6,6 +6,8 @@ local servers = {
 	lua_ls = {},
 	gopls = {},
 	vtsls = {},
+	nil_ls = {},
+	metals = {},
 }
 
 for server in pairs(servers) do
