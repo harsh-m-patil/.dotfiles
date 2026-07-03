@@ -93,8 +93,3 @@ export LESS=-R
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 export EDITOR='nvim'
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.npm-global/bin:$PATH"
-export PATH="$HOME/.vite-plus/bin:$PATH"
-export LC_ALL=en_IN.UTF-8

@@ -5,7 +5,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    home-manager.url = "github:nix-community/home-manager/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -14,6 +16,7 @@
       nix-darwin,
       nixpkgs,
       nix-homebrew,
+      home-manager,
     }:
     let
       configuration = { pkgs, config, ... }: {
@@ -24,6 +27,7 @@
 
         # Required by nix-darwin for user-scoped options like homebrew.*.
         system.primaryUser = "harshwardhan.p_int";
+        users.users."harshwardhan.p_int".home = "/Users/harshwardhan.p_int";
 
         environment.systemPackages = [
           pkgs.vim
@@ -49,6 +53,8 @@
           pkgs.nodejs
           pkgs.go
           pkgs.uv
+          pkgs.scala
+          pkgs.sbt
 
           # languages servers
           pkgs.gopls
@@ -74,6 +80,11 @@
             "aerospace"
           ];
           onActivation.cleanup = "zap";
+        };
+
+        home-manager = {
+          backupFileExtension = "backup";
+          users."harshwardhan.p_int" = import ./home.nix;
         };
 
         system.activationScripts.applications.text =
@@ -128,6 +139,7 @@
       darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
+          home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
