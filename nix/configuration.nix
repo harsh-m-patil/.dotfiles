@@ -41,8 +41,8 @@
   };
 
   programs.waybar.enable = true;
-	programs.zsh.enable = true;
-	programs.nix-ld.enable = true;
+  programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   services.xserver.xkb.layout = "us";
 
@@ -60,13 +60,17 @@
     pulse.enable = true;
   };
 
-	hardware.bluetooth.enable = true;
-	services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   users.users.harshmpatil = {
     isNormalUser = true;
     description = "harshmpatil";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -88,14 +92,14 @@
     gnumake
     cmake
     starship
-		gcc
-		tree-sitter
+    gcc
+    tree-sitter
     zoxide
     brightnessctl
     tmux
-		pnpm
+    pnpm
     nodejs
-		pulseaudio
+    pulseaudio
     go
     hyprpaper
     hyprpicker
@@ -107,30 +111,33 @@
     yt-dlp
     opencode
     typst
-		hyprshot
-		telegram-desktop
-		mpv
+    hyprshot
+    telegram-desktop
+    mpv
 
     unstable.neovim
     quickshell
-		bun
+    bun
 
-		# lsp servers
-		lua-language-server
-		gopls
-		inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # lsp servers
+    lua-language-server
+    gopls
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     typescript-language-server
-		tinymist
+    tinymist
   ];
 
   fonts.packages = with pkgs; [
     lilex
-		geist-font
+    geist-font
     nerd-fonts.jetbrains-mono
   ];
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     extra-substituters = [ "https://vicinae.cachix.org" ];
     extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
   };
