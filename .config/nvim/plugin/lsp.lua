@@ -7,7 +7,19 @@ local servers = {
 	gopls = {},
 	vtsls = {},
 	nil_ls = {},
-	metals = {},
+	metals = {
+  capabilities = vim.tbl_deep_extend(
+    "force",
+    vim.lsp.protocol.make_client_capabilities(),
+    {
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = false,
+        },
+      },
+    }
+  ),
+	},
 }
 
 for server in pairs(servers) do
