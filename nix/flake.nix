@@ -48,6 +48,7 @@
           pkgs.gh
           pkgs.jq
           pkgs.yq
+          pkgs.sesh
 
           # language runtimes, package managers and more
           pkgs.nodejs
@@ -60,7 +61,7 @@
           pkgs.gopls
           pkgs.lua-language-server
           pkgs.typescript-language-server
-          pkgs.nil
+          pkgs.nil # nix-lsp
           pkgs.metals
         ];
 
@@ -110,6 +111,9 @@
 
         # Enable alternative shell support in nix-darwin.
         # programs.fish.enable = true;
+
+        security.pam.services.sudo_local.touchIdAuth = true;
+
         system.defaults = {
           dock.autohide = true;
           dock.persistent-apps = [
