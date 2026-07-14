@@ -26,8 +26,8 @@
         nixpkgs.config.allowUnfree = true;
 
         # Required by nix-darwin for user-scoped options like homebrew.*.
-        system.primaryUser = "harshwardhan.p_int";
-        users.users."harshwardhan.p_int".home = "/Users/harshwardhan.p_int";
+        system.primaryUser = "harshwardhan.p";
+        users.users."harshwardhan.p".home = "/Users/harshwardhan.p";
 
         environment.systemPackages = [
           pkgs.vim
@@ -44,11 +44,14 @@
           pkgs.ripgrep
           pkgs.lazygit
           pkgs.tree
+          pkgs.gcc
+          pkgs.cmake
           pkgs.tree-sitter
           pkgs.gh
           pkgs.jq
           pkgs.yq
           pkgs.sesh
+          pkgs.stow
 
           # language runtimes, package managers and more
           pkgs.nodejs
@@ -60,7 +63,7 @@
           # languages servers
           pkgs.gopls
           pkgs.lua-language-server
-          pkgs.typescript-language-server
+          pkgs.vtsls
           pkgs.nil # nix-lsp
           pkgs.metals
         ];
@@ -79,13 +82,14 @@
           enable = true;
           casks = [
             "aerospace"
+            "claude-code"
           ];
           onActivation.cleanup = "zap";
         };
 
         home-manager = {
           backupFileExtension = "backup";
-          users."harshwardhan.p_int" = import ./home.nix;
+          users."harshwardhan.p" = import ./home.nix;
         };
 
         system.activationScripts.applications.text =
@@ -149,7 +153,7 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = "harshwardhan.p_int";
+              user = "harshwardhan.p";
               trust = {
                 formulae = [ ];
                 casks = [ "nikitabobko/tap/aerospace" ];

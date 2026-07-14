@@ -5,7 +5,16 @@ vim.pack.add({
 	"https://github.com/nvim-telescope/telescope-ui-select.nvim"
 })
 
-require("telescope").setup {
+local fzf_native_path = vim.fn.stdpath("data") .. "/site/pack/core/opt/telescope-fzf-native.nvim"
+local fzf_lib_path = fzf_native_path .. "/build/libfzf.so"
+
+if vim.fn.filereadable(fzf_lib_path) == 0 and vim.fn.executable("make") == 1 then
+	vim.fn.system({ "make", "-C", fzf_native_path })
+end
+
+local telescope = require("telescope")
+
+telescope.setup {
 	pickers = {
 		find_files = {
 			theme = "ivy",
@@ -23,8 +32,12 @@ require("telescope").setup {
 	}
 }
 
-require("telescope").load_extension "fzf"
-require("telescope").load_extension "ui-select"
+local ok, err = pcall(telescope.load_extension, "fzf")
+if not ok then
+	vim.notify("telescope-fzf-native failed to load: " .. err, vim.log.levels.WARN)
+end
+
+telescope.load_extension "ui-select"
 
 local builtin = require("telescope.builtin")
 local map = vim.keymap.set
