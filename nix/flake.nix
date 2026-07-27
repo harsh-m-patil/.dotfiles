@@ -6,6 +6,7 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     home-manager.url = "github:nix-community/home-manager/master";
+    herdr.url = "github:ogulcancelik/herdr";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -17,6 +18,7 @@
       nixpkgs,
       nix-homebrew,
       home-manager,
+      herdr,
     }:
     let
       configuration = { pkgs, config, ... }: {
@@ -52,6 +54,7 @@
           pkgs.yq
           pkgs.sesh
           pkgs.stow
+          herdr.packages.${pkgs.system}.default
 
           # language runtimes, package managers and more
           pkgs.nodejs
