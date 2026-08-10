@@ -34,6 +34,8 @@
         environment.systemPackages = [
           pkgs.vim
           pkgs.neovim
+          pkgs.zed-editor
+
           pkgs.git
           pkgs.tmux
           pkgs.zoxide
@@ -56,12 +58,18 @@
           pkgs.stow
           herdr.packages.${pkgs.system}.default
 
+          pkgs.databricks-cli
+          pkgs.gitleaks
+
           # language runtimes, package managers and more
-          pkgs.nodejs
+          pkgs.nodejs_22
+          pkgs.pnpm
+          pkgs.yarn
           pkgs.go
           pkgs.uv
           pkgs.scala
           pkgs.sbt
+          pkgs.mysql84
 
           # languages servers
           pkgs.gopls
@@ -86,6 +94,10 @@
           casks = [
             "aerospace"
             "claude-code"
+            "postman"
+            "raycast"
+            "codex"
+            "t3-code"
           ];
           onActivation.cleanup = "zap";
         };

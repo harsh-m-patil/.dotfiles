@@ -46,10 +46,19 @@ map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
 map("n", "<leader>fh", builtin.help_tags, { desc = "Find help" })
 map("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 map("n", "<leader>fp", builtin.pickers, { desc = "Find Pickers" })
+map("n", "<leader>fg", builtin.live_grep, { desc = "Find Grep" })
 map("n", "<leader>en", function()
 		builtin.find_files {
 			cwd = vim.fn.stdpath "config"
 		}
 	end,
 	{ desc = "find neovim files" }
+)
+map("n", "<leader>fn", function()
+		print(vim.fn.expand("~/notes"))
+		builtin.find_files {
+			cwd = vim.fn.expand("~/notes")
+		}
+	end,
+	{ desc = "find notes" }
 )

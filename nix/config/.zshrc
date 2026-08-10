@@ -27,6 +27,11 @@ bindkey '^f' autosuggest-accept
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M viins '^x^g' edit-command-line
+bindkey -M vicmd '^x^g' edit-command-line
+
 source ~/.zsh_aliases
 
 # History
