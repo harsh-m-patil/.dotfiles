@@ -43,6 +43,7 @@
     yq
     gitleaks
     typst
+    starship
     inputs.herdr.packages.${system}.default
 
     nodejs_22
