@@ -60,6 +60,10 @@
     mkalias
     ghostty-bin
     mysql84
+    metals
+    databricks-cli
+    scala
+    sbt
   ];
 
   security.pam.services.sudo_local.touchIdAuth = true;

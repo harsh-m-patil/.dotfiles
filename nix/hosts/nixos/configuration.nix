@@ -86,6 +86,8 @@
     hyprpicker
     hyprshot
     dunst
+    opencode
+    yt-dlp
     telegram-desktop
     mpv
     inputs.quickshell.packages.${system}.default

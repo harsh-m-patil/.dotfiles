@@ -42,10 +42,7 @@
     jq
     yq
     gitleaks
-    databricks-cli
-    yt-dlp
     typst
-    opencode
     inputs.herdr.packages.${system}.default
 
     nodejs_22
@@ -54,14 +51,11 @@
     bun
     go
     uv
-    scala
-    sbt
 
     lua-language-server
     gopls
     vtsls
     nil
-    metals
   ];
 
   fonts.packages = with pkgs; [
