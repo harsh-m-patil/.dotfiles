@@ -1,0 +1,67 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "tab_bar": {
+    "show": false
+  },
+  "soft_wrap": "editor_width",
+  "relative_line_numbers": "enabled",
+  "title_bar": {
+    "show_user_menu": true,
+    "show_sign_in": false,
+    "show_onboarding_banner": false
+  },
+  "project_panel": {
+    "button": true
+  },
+  "proxy": "",
+  "which_key": {
+    "enabled": true
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    },
+    "pi-acp": {
+      "default_config_options": {
+        "thought_level": "low",
+        "model": "portkey/GLM-5.2"
+      },
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "terminal": {
+    "font_family": "Lilex",
+    "font_size": 16.0
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  "vim_mode": true,
+  "icon_theme": {
+    "mode": "light",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Tokyo Night",
+  },
+}

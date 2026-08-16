@@ -1,96 +1,125 @@
 # My Dotfiles
 
-Personal configuration files for a productive Linux development environment with support for both Hyprland (Wayland) and i3 (X11) window managers.
+Cross-platform dotfiles managed with Nix, nix-darwin, NixOS, and Home Manager.
 
-![Tiles](./assets/tiles.png)
-![Nvim](./assets/nvim.png)
-![Neofetch](./assets/neofetch.png)
+The same packages and user configuration are shared between macOS and Linux.
+Platform-specific settings live in separate host modules.
 
-## 🚀 Quick Setup
+## Repository structure
 
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/harsh-m-patil/.dotfiles.git ~/.dotfiles
-   ```
-
-2. **Navigate to dotfiles**
-
-   ```bash
-   cd ~/.dotfiles
-   ```
-
-3. **Install configurations using GNU Stow**
-   ```bash
-   stow .
-   ```
-
-## 📦 What's Included
-
-### Window Managers & Compositors
-
-- **Hyprland** - Modern Wayland compositor with animations
-- **i3** - Tiling window manager for X11
-- **Picom** - X11 compositor for transparency and effects
-
-### Terminals & Shells
-
-- **Alacritty** - GPU-accelerated terminal emulator
-- **Ghostty** - Fast terminal emulator
-- **Zsh** - Enhanced shell with custom aliases
-- **Tmux** - Terminal multiplexer with custom sessions
-
-### Development Tools
-
-- **Neovim** - Highly configured with LSP, completions, and plugins
-- **Starship** - Cross-shell prompt
-
-### System & Utilities
-
-- **Waybar** - Status bar for Wayland
-- **Polybar** - Status bar for X11
-- **Rofi** - Application launcher and window switcher
-- **Dunst** - Notification daemon
-- **Ranger** - Console file manager
-- **Bat** - Enhanced cat with syntax highlighting
-- **Glow** - Markdown viewer
-
-### Theming
-
-- **Catppuccin** theme variants (Mocha, Macchiato)
-- **Tokyo Night** theme support
-- Custom wallpapers included
-
-## 🛠️ Prerequisites
-
-Before installing, ensure you have:
-
-- GNU Stow
-- Git
-- Your preferred window manager (Hyprland or i3)
-
-## 📁 Directory Structure
-
-```
-~/.dotfiles/
-├── .config/          # Application configurations
-├── assets/           # Screenshots and images
-├── scripts/          # Utility scripts
-├── wallpapers/       # Desktop wallpapers
-└── .*               # Shell and Git configurations
+```text
+.
+├── .config/nvim/                  # Neovim configuration
+├── nix/
+│   ├── flake.nix                  # macOS and NixOS flake outputs
+│   ├── configuration.nix          # shared system packages and settings
+│   ├── home.nix                   # shared Home Manager configuration
+│   ├── home/
+│   │   ├── darwin.nix             # macOS Home Manager settings
+│   │   └── linux.nix              # Linux Home Manager settings
+│   ├── hosts/
+│   │   ├── darwin.nix             # macOS, Homebrew, and Aerospace settings
+│   │   └── nixos/
+│   │       ├── configuration.nix  # NixOS, Hyprland, and Linux services
+│   │       └── hardware-configuration.nix
+│   └── config/                    # configuration files linked by Home Manager
+├── scripts/
+└── README.md
 ```
 
-## 🎨 Customization
+## Clone the repository
 
-The configurations are designed to work together but can be selectively applied:
+```bash
+git clone https://github.com/harsh-m-patil/.dotfiles.git ~/.dotfiles
+cd ~/.dotfiles/nix
+```
 
-- Each application config is in `.config/`
-- Scripts for automation are in `scripts/`
-- Themes can be easily switched between variants
+## macOS
 
-## 📝 Notes
+The macOS configuration targets Apple Silicon (`aarch64-darwin`) and is exposed
+as `darwinConfigurations.mac`.
 
-- Configurations are optimized for a development workflow
-- Includes both Wayland (Hyprland) and X11 (i3) setups
-- Tmux sessions are pre-configured for different tech stacks
-- Neovim setup includes comprehensive plugin management
+### First installation
+
+Install Nix, then bootstrap nix-darwin from the flake:
+
+```bash
+sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#mac
+```
+
+The configuration installs shared command-line tools and macOS-specific
+applications. Homebrew formulae, casks, taps, Aerospace, system defaults, and
+Touch ID for `sudo` are managed declaratively.
+
+The private `swigy/brew` tap requires access to its GitHub repository.
+
+### Apply later changes
+
+```bash
+cd ~/.dotfiles/nix
+sudo darwin-rebuild switch --flake .#mac
+```
+
+## NixOS
+
+The Linux configuration targets `x86_64-linux` and is exposed as
+`nixosConfigurations.nixos`.
+
+It includes the shared packages and dotfiles together with NixOS-specific
+configuration for Hyprland, GNOME, Docker, PipeWire, Bluetooth, Vicinae, and
+Quickshell.
+
+### Hardware configuration
+
+`nix/hosts/nixos/hardware-configuration.nix` describes the existing Linux
+machine. Before installing on different hardware, replace it with the generated
+configuration for that machine:
+
+```bash
+sudo nixos-generate-config --show-hardware-config \
+  > ~/.dotfiles/nix/hosts/nixos/hardware-configuration.nix
+```
+
+Review the generated filesystem and boot settings before activating it.
+
+### Apply the configuration
+
+From an existing NixOS installation:
+
+```bash
+cd ~/.dotfiles/nix
+sudo nixos-rebuild switch --flake .#nixos
+```
+
+## Validate and format
+
+Run the formatter from the `nix` directory:
+
+```bash
+nix fmt
+```
+
+Evaluate both platform configurations without activating either system:
+
+```bash
+nix flake check --all-systems
+nix eval --raw .#darwinConfigurations.mac.system.drvPath
+nix eval --raw .#nixosConfigurations.nixos.config.system.build.toplevel.drvPath
+```
+
+## Update dependencies
+
+Update the locked flake inputs and then rebuild the current platform:
+
+```bash
+cd ~/.dotfiles/nix
+nix flake update
+```
+
+Review `flake.lock` and run the validation commands before switching the system.
+
+## State versions
+
+The NixOS, nix-darwin, and Home Manager state versions intentionally remain at
+the versions used when each machine was first configured. Do not change them as
+part of a routine dependency update.

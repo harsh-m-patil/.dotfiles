@@ -1,0 +1,20 @@
+[
+  {
+    "context": "Editor && edit_prediction",
+    "unbind": {
+      "tab": "editor::AcceptEditPrediction"
+    },
+    "bindings": {
+      "ctrl-y": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "unbind": {
+      "tab": "editor::ComposeCompletion"
+    },
+    "bindings": {
+      "ctrl-y": "editor::ComposeCompletion"
+    }
+  }
+]
