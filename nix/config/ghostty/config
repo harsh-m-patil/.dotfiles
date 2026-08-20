@@ -1,10 +1,13 @@
-font-family="JetBrainsMono Nerd Font"
+font-family = "GeistMono Nerd Font"
 font-size = 16
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
-# background-blur=true
+theme = TokyoNight
+background = #0D1117
+window-decoration = none
+cursor-style-blink = false
+
+# background-blur = true
 # background-opacity = 0.80
-theme=TokyoNight
-window-decoration=none
-cursor-style-blink=false
+
