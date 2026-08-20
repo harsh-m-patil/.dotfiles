@@ -81,7 +81,7 @@
               trust = {
                 formulae = [ "swigy/brew/coast" ];
                 casks = [ "nikitabobko/tap/aerospace" ];
-                taps = [ ];
+                taps = [ "nikitabobko/tap" ];
               };
             };
           }

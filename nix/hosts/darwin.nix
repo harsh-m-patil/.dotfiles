@@ -7,6 +7,9 @@
   ...
 }:
 
+let
+  swigyBrewCloneTarget = builtins.getEnv "SWIGY_BREW_CLONE_TARGET";
+in
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
 
@@ -64,19 +67,29 @@
     databricks-cli
     scala
     sbt
+    awscli
+    podman
+    podman-compose
   ];
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";
+    # Homebrew 6 clears its trust store during `brew bundle --force-cleanup`,
+    # then fails to clean cached artifacts from the now-untrusted taps below.
+    onActivation.cleanup = "none";
 
     taps = [
-      {
-        name = "swigy/brew";
-        clone_target = "https://github.com/swiggy-private/homebrew-brew.git";
-      }
+      (
+        if swigyBrewCloneTarget == "" then
+          "swigy/brew"
+        else
+          {
+            name = "swigy/brew";
+            clone_target = swigyBrewCloneTarget;
+          }
+      )
       "nikitabobko/tap"
     ];
 
