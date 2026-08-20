@@ -10,6 +10,7 @@ Platform-specific settings live in separate host modules.
 ```text
 .
 ├── .config/nvim/                  # Neovim configuration
+├── zed/.config/zed/               # Zed configuration, managed with GNU Stow
 ├── nix/
 │   ├── flake.nix                  # macOS and NixOS flake outputs
 │   ├── configuration.nix          # shared system packages and settings
@@ -32,6 +33,19 @@ Platform-specific settings live in separate host modules.
 ```bash
 git clone https://github.com/harsh-m-patil/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles/nix
+```
+
+## Zed
+
+Zed configuration is managed separately from Nix so that Zed can write its
+settings directly. Install or update it with GNU Stow:
+
+```bash
+cd ~/.dotfiles
+# Remove the old Home Manager links first, if present.
+unlink ~/.config/zed/settings.json 2>/dev/null || true
+unlink ~/.config/zed/keymap.json 2>/dev/null || true
+stow --target="$HOME" zed
 ```
 
 ## macOS
